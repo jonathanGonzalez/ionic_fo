@@ -32,7 +32,7 @@ function ($scope, $http) {
             fecha: $scope.signUpInfo.fecha,
             genero: $scope.signUpInfo.genero
         }
-        $http.post("http://localhost/Co-Workers/APPS/Freeorder/www/api/signup.php", data).success(function(response){
+        $http.post("http://co-workers.com/adaris/freeorder/api/signup.php", data).success(function(response){
             console.log(response); 
             localStorage.setItem("correo", JSON.stringify(response));           
         }).error(function(error){
@@ -118,7 +118,7 @@ function ($scope, $http, $stateParams) {
             correo: $scope.loginInfo.correo,
             password: $scope.loginInfo.password
         }
-        $http.post("http://localhost/Co-Workers/APPS/Freeorder/www/api/login.php", data).success(function(response){
+        $http.post("http://co-workers.com/adaris/freeorder/api/login.php", data).success(function(response){
             console.log(response); 
             localStorage.setItem("correo", JSON.stringify({correo: response[0].correo}));           
         }).error(function(error){

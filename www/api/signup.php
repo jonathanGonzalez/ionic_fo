@@ -7,7 +7,7 @@
     $password = $data->password;
     $fecha = $data->fecha;
     $genero = $data->genero;
-    $q= "INSERT INTO user (nombre, apellido, correo, password, fechaNacimiento, genero) VALUES  (:nombre, :apellido, :correo, :password, :fecha, :genero)";
+    $q= "INSERT INTO users (use_nombre, use_apellidos, use_correo, use_contrasena, use_fecha_nacimiento, use_genero) VALUES  (:nombre, :apellido, :correo, :password, :fecha, :genero)";
     $query = $db->prepare($q);
     $execute = $query->execute(array(
         ":nombre" => $nombre,
