@@ -1,5 +1,3 @@
 
-para base de datos app freeorder
-
-usuario bd: coworker_free
-contraseña bd: freeorder2017
+coworker_free
+freeorder2017
