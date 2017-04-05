@@ -5,28 +5,31 @@
     </div>
     <form id="page2-form2" class="list">
       <label class="item item-input item-floating-label" id="page2-input5">
-        <input type="text" placeholder="Nombre">
+        <input type="text" ng-model="signUpInfo.nombre" placeholder="Nombre">
       </label>
       <label class="item item-input item-floating-label" id="page2-input6">
-        <input type="text" placeholder="Apellidos">
+        <input type="text" ng-model="signUpInfo.apellido" placeholder="Apellidos">
       </label>
       <label class="item item-input" id="page2-input7">
-        <input type="email" placeholder="Correo electrónico">
+        <input type="email" ng-model="signUpInfo.correo" placeholder="Correo electrónico">
       </label>
       <label class="item item-input" id="page2-input8">
+        <input type="password" ng-model="signUpInfo.password" placeholder="Contraseña">
+      </label>
+      <label class="item item-input" id="page2-input9">
         <span class="input-label">Fecha de Nacimiento:</span>
-        <input type="date" placeholder="">
+        <input type="date" ng-model="signUpInfo.fecha">
       </label>
       <label class="item item-select" id="page2-select1">
         <span class="input-label">Género</span>
-        <select>
+        <select ng-model="signUpInfo.genero">
           <option>Femenino</option>
           <option>Masculino</option>
           <option>Otro</option>
         </select>
       </label>
     </form>
-    <a ui-sref="page3" id="page2-button4" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block">Crear Cuenta</a>
+    <a ui-sref="page3" id="page2-button4" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" ng-click="signUserUp();">Crear Cuenta</a>
     <div class="list card" id="page2-card23">
       <div class="item item-body" id="page2-list-item-container4">
         <div id="page2-markdown4" class="show-list-numbers-and-dots">

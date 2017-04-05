@@ -5,7 +5,9 @@
     $password = $data->password;
     $userInfo = $db->query("SELECT use_correo FROM users WHERE use_correo='$correo' AND use_contrasena='$password'");
     $userInfo = $userInfo->fetchAll();
+    //$row=$userInfo->fetch_assoc();
     echo json_encode($userInfo);
+    //echo json_encode($row);
 	
 
 ?>

@@ -3,12 +3,12 @@
 
     <item
         is-multidex="false"
-        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\jars\classes.jar"
+        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
         sha1="afe8eb4906b94df000e2b3714c864ec42d4e4ea6">
-        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\platforms\android\build\intermediates\pre-dexed\debug\CordovaLib-unspecified-debug_e29b9f3690ee1666e2becf9a8e98e2aa371b226f.jar" />
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\CordovaLib-unspecified-debug_56c522fab1988e2c0b20140f4bd6b7bf8bb56fe6.jar" />
     </item>
 
 </items>
