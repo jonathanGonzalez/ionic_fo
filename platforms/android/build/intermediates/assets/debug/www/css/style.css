@@ -1,1 +1,22 @@
 /* Empty. Add your own CSS if you like */
+.producto{
+    margin:0 5px
+}
+
+.producto .imagen{
+    text-align: center;
+    padding: 13px 0;
+    border: solid 1px;
+}
+
+.producto p{
+    font-size: 12px;
+}
+
+.producto .precio{
+        font-weight: bold;
+    font-size: 25px;
+    border-bottom: 1px solid;
+    text-align: right;
+    margin-bottom: 19px;
+}

@@ -199,9 +199,6 @@ $http({
             var precio = parseInt(item.valor);
             
             total += precio;
-            
-            
-          
 
         }
         return total;
@@ -221,8 +218,11 @@ $http({
 
     $scope.comprar = function(){
         alert(localStorage['pedido'])
+        var obj = JSON.parse(localStorage['pedido']);
          var data = {
-            pedido: localStorage['pedido']
+          pedido: obj
+          
+
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/pedidos.php", data).success(function(){
             //console.log(response);           
