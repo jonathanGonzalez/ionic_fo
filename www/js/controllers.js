@@ -9,10 +9,10 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('page2Ctrl', ['$scope', '$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('page2Ctrl', ['$scope', '$http', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $http) {
+function ($scope, $http, $window) {
 //variables para registrar
     $scope.signUpInfo = {
         nombre : undefined,
@@ -34,7 +34,8 @@ function ($scope, $http) {
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/signup.php", data).success(function(response){
             console.log(response); 
-            localStorage.setItem("correo", JSON.stringify(response));           
+             localStorage.setItem("user_id", response);             
+            $window.location = "#/page3";      
         }).error(function(error){
             console.error(error);
         });
@@ -46,6 +47,9 @@ function ($scope, $http) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope,$window) {
+ if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  }
     //localStorage.setItem("prueba", "infor de prueba en localStorage");
 
 /*if(localStorage['correo'] === undefined){
@@ -58,6 +62,9 @@ function ($scope,$window) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $window, $http) {
+    if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  }
   $http.get("http://co-workers.com.co/adaris/freeorder/api/sectores.php")
     .then( function(respuesta){
         $scope.sectores = respuesta.data;
@@ -73,7 +80,10 @@ function ($scope, $window, $http) {
 .controller('page5Ctrl', ['$scope','$window','$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $window, $http) { 
+function ($scope, $window, $http) {
+    if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  } 
    $http({
        url:"http://co-workers.com.co/adaris/freeorder/api/restaurantes.php",
        method:"POST",
@@ -99,6 +109,9 @@ function ($scope, $window, $http) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $window, $http) {
+    if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  }
  $http({
        url:"http://co-workers.com.co/adaris/freeorder/api/categorias.php",
        method:"POST",
@@ -122,7 +135,9 @@ function ($scope, $window, $http) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $window) {
-
+    if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  }
 
 }])
 
@@ -130,14 +145,17 @@ function ($scope, $window) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $window) {
-
+    if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  }
 
 }])
 
-.controller('page9Ctrl', ['$scope', '$http', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('page9Ctrl', ['$scope', '$http', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $http, $stateParams) {
+function ($scope, $http, $window) {
+
 //variables para registrar
     $scope.loginInfo = {
         correo : undefined,
@@ -151,7 +169,8 @@ function ($scope, $http, $stateParams) {
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/login.php", data).success(function(response){
             console.log(response); 
-            localStorage.setItem("correo", JSON.stringify({correo: response[0].use_correo}));           
+            localStorage.setItem("user_id", response[0].use_id);
+            $window.location = "#/page4";        
         }).error(function(error){
             console.error(error);
         });
@@ -163,6 +182,9 @@ function ($scope, $http, $stateParams) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $window, $http) {
+    if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  }
 $http({
        url:"http://co-workers.com.co/adaris/freeorder/api/productos.php",
        method:"POST",
@@ -176,36 +198,20 @@ $http({
        }
    ); 
   
- 
     //agregar productos al carrito de compras
-        $scope.carrito = [];
-    
-    $scope.agregar = function(_item){
-               
+        $scope.carrito = [];    
+        $scope.agregar = function(_item){               
         $scope.carrito.push(_item);
-
-    localStorage.setItem('pedido',JSON.stringify($scope.carrito));
-    }
-
-    
-
-    
+        localStorage.setItem('pedido',JSON.stringify($scope.carrito));
+}    
     $scope.total = function(){
-        
         var total = 0;
-        
-        
         for(item of $scope.carrito){
-            var precio = parseInt(item.valor);
-            
+            var precio = parseInt(item.valor);            
             total += precio;
-
         }
-        return total;
-        
+        return total;        
     }
-    
-        
     //fin de agregar productos al carrito
 
     $scope.eliminarPedido = function(){
@@ -217,12 +223,11 @@ $http({
     };
 
     $scope.comprar = function(){
-        alert(localStorage['pedido'])
-        var obj = JSON.parse(localStorage['pedido']);
+        alert(localStorage['pedido']);
+        alert(localStorage['user_id']);
          var data = {
-          pedido: obj
-          
-
+          pedido: localStorage['pedido'],
+          user_id: parseInt(localStorage['user_id'])
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/pedidos.php", data).success(function(){
             //console.log(response);           
@@ -230,6 +235,4 @@ $http({
             //console.error(error);
         });
     }
-
-    
 }])
