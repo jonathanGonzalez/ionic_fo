@@ -226,7 +226,7 @@ $http({
         alert(localStorage['pedido']);
         alert(localStorage['user_id']);
          var data = {
-          pedido: localStorage['pedido'],
+          pedido: JSON.parse(localStorage['pedido']),
           user_id: parseInt(localStorage['user_id'])
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/pedidos.php", data).success(function(){

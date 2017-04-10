@@ -24,11 +24,9 @@ echo $lastId;
 echo "<br/> contador del arreglo<br/>";
 echo count($pedidos);
 echo "<br/> fin del contador del arreglo<br/>";
-/*for($i = 0; $i < count($pedidos); ++$i) {
-    $id_pedido= $pedidos[$i]['id']
-}*/
 
-/*foreach ($pedidos as $compra) {
-$query = $db->query("INSERT INTO pedidos_has_productos (pedidos_ped_id, productos_pro_id)  VALUES ('".$lastId."',"$id_pedido")");
-}*/
+for($i = 0; $i <= count($pedidos); ++$i) {
+    $id_producto= $pedidos[$i]['id'];
+    $query = $db->query("INSERT INTO pedidos_has_productos (pedidos_ped_id, productos_pro_id)  VALUES ('".$lastId."','".$id_producto."')");
+}
 ?>
