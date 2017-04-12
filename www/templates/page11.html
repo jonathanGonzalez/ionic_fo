@@ -1,14 +1,18 @@
-<ion-view title="Page" id="page11">
+<ion-view title="Tu Pedido" id="page11">
+  <ion-nav-buttons side="left" class="has-header">
+    <button class="button button-icon icon No Icon"></button>
+  </ion-nav-buttons>
   <ion-content padding="true" class="has-header">
-      <div class="col-sm-3 carrito">        
-        <h4><i class="fa fa-shopping-cart"></i> Carrito de compras</h4>
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="producto in carrito">
-               {{producto.nombre}}
-                <strong class="pull-right">{{producto.valor}}</strong>
-            </li>
-        </ul>
-        <h2>Total:  ${{total()}}</h2>
+    <div class="list card" id="pedido-card22">
+      <ion-item class="item-thumbnail-left positive" id="pedido-list-item10" ng-repeat="producto in carritoCompleto">
+        <img src="{{producto.imagen}}">
+        <h2positive>{{producto.nombre}}
+          <p style="white-space:normal;">{{producto.valor | currency}}</p>
+        </h2positive>
+        <input type="text" ng-model="comentario" placeholder="¿Quieres decirnos algo sobre este producto?"/>
+      </ion-item>
     </div>
-</ion-content>
+      <h2>Total:  ${{total()}} </h2>
+    <button id="page6-button6" style="font-weight:500;" class="button button-positive  button-block" ng-click="comprar();">Realizar Pedido</button>
+  </ion-content>
 </ion-view>

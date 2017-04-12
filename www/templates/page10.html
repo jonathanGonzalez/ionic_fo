@@ -1,23 +1,20 @@
-<ion-view title="Page" id="page10">
+<ion-view title="Page" id="page10"  class="bar-positive">
   <ion-content padding="true" class="has-header">
-    <div class="row">
-        <div class="col-sm-9">
-            <div  class="push-left well col-sm-3 producto" ng-repeat="producto in productos">            
-                <h4>{{producto.nombre}}</h4>            
-                <div class="imagen">
-                    <img ng-src="{{producto.imagen}}" width="50">
-                </div>            
-                <div class="precio">{{producto.valor | currency}}</div>            
-                <p>
-                    {{producto.descripcion}}
-                </p>
-                <button class="btn btn-danger" ng-click="agregar(producto);">Adicionar</button>
-            </div>
-
+    <div ng-repeat="producto in productos">
+        <h1 id="page6-heading1" style="color:#000000;text-align:center;">{{producto.nombre}}</h1>
+        <div>
+        <img src="{{producto.imagen}}" style="display: block; width: 80%; height: auto; margin-left: auto; margin-right: auto;">
+        </div>
+        <div class="item item-body" id="page6-list-item-container5">
+        <h2 id="page6-heading2" style="color:#000000;text-align:center;">{{producto.descripcion}}</h2>
+        <h2 id="page6-heading3" style="color:#000000;text-align:center;">{{producto.valor | currency}}</h2>
+        <button id="page6-button6" style="font-weight:500;" class="button button-positive  button-block" ng-click="agregarPedidoId(producto.id);agregarPedidoCompleto(producto)">Agregar</button>
+        </div>
+    </div>
         <div class="col-sm-3 carrito">        
-        <h4><i class="fa fa-shopping-cart"></i> Carrito de compras</h4>
+      <h4><i class="fa fa-shopping-cart"></i> Carrito de compras</h4>
         <ul class="list-group">
-            <li class="list-group-item" ng-repeat="producto in carrito">
+            <li class="list-group-item" ng-repeat="producto in carritoCompleto">
                {{producto.nombre}}
                 <strong class="pull-right">{{producto.valor}}</strong>
             </li>

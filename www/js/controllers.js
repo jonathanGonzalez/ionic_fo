@@ -72,7 +72,7 @@ function ($scope, $window, $http) {
 
     $scope.consul_Rest = function(_sectId){
         localStorage.setItem("sectId", _sectId);
-        $window.location = "#/page5";
+        $window.location = "#/tab/page5";
     }
 
 }])
@@ -99,10 +99,8 @@ function ($scope, $window, $http) {
 
     $scope.consul_Carta = function(_restId){
         localStorage.setItem("restId", _restId);
-        $window.location = "#/page6";
+        $window.location = "#/tab/page6";
     }
-
-
 }])
    
 .controller('page6Ctrl', ['$scope','$window', '$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -127,7 +125,7 @@ function ($scope, $window, $http) {
 
     $scope.consul_Productos = function(_categId){
         localStorage.setItem("categId", _categId);
-        $window.location = "#/page10";
+        $window.location = "#/tab/page10";
     }
 }])
 
@@ -170,7 +168,7 @@ function ($scope, $http, $window) {
         $http.post("http://co-workers.com.co/adaris/freeorder/api/login.php", data).success(function(response){
             console.log(response); 
             localStorage.setItem("user_id", response[0].use_id);
-            $window.location = "#/page4";        
+            $window.location = "#/tab/page4";        
         }).error(function(error){
             console.error(error);
         });
@@ -178,10 +176,10 @@ function ($scope, $http, $window) {
 
 }])
 
-.controller('page10Ctrl', ['$scope', '$window', '$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('page10Ctrl', ['$scope', '$window', '$http', '$rootScope', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $window, $http) {
+function ($scope, $window, $http, $rootScope) {
     if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
   }
@@ -199,14 +197,18 @@ $http({
    ); 
   
     //agregar productos al carrito de compras
-        $scope.carrito = [];    
-        $scope.agregar = function(_item){               
-        $scope.carrito.push(_item);
-        localStorage.setItem('pedido',JSON.stringify($scope.carrito));
-}    
-    $scope.total = function(){
+        $scope.carritoId = [];    
+        $scope.agregarPedidoId = function(_item){               
+        $scope.carritoId.push(_item);
+        localStorage.setItem('pedido',JSON.stringify($scope.carritoId));
+}   
+        $rootScope.carritoCompleto = [];
+        $scope.agregarPedidoCompleto = function(_productoCompleto){
+        $scope.carritoCompleto.push(_productoCompleto);
+        }
+   $scope.total = function(){
         var total = 0;
-        for(item of $scope.carrito){
+        for(item of $scope.carritoCompleto){
             var precio = parseInt(item.valor);            
             total += precio;
         }
@@ -219,7 +221,7 @@ $http({
         localStorage.removeItem('restId');
         localStorage.removeItem('categId');
         localStorage.removeItem('pedido');
-        $window.location = '#/page4';
+        $window.location = '#/tab/page4';
     };
 
     $scope.comprar = function(){
@@ -235,4 +237,14 @@ $http({
             //console.error(error);
         });
     }
+}])
+
+.controller('page12Ctrl', ['$scope', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope,$window) {
+ if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  }
+
 }])
