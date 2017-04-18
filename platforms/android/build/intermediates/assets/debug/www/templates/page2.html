@@ -4,6 +4,7 @@
       <img src="img/GAks9KalSBqqZvyBKRwz_header.jpg" style="display: block; width: 60%; height: auto; margin-left: auto; margin-right: auto;">
     </div>
     <form id="page2-form2" class="list">
+      <ion-item class="item-divider" id="page3-list-item-divider3"> Información Personal</ion-item>
       <label class="item item-input item-floating-label" id="page2-input5">
         <input type="text" ng-model="signUpInfo.nombre" placeholder="Nombre">
       </label>
@@ -28,6 +29,61 @@
           <option>Otro</option>
         </select>
       </label>
+      <ion-item class="item-divider" id="page3-list-item-divider3"> Información Adicional</ion-item>
+      <label class="item item-input item-floating-label" id="page3-input12">
+        <input type="tel" placeholder="Teléfono celular" ng-model="signUpInfo.telefono">
+      </label>
+      <label class="item item-input item-floating-label" id="page3-input13">
+        <input type="text" placeholder="Dirección de facturación" ng-model="signUpInfo.direccion">
+      </label>
+      <label class="item item-input item-floating-label" id="page3-input14">
+        <input type="text" placeholder="Código postal" ng-model="signUpInfo.codPostal">
+      </label>
+      <label class="item item-select" id="page3-select2">
+        <span class="input-label">Ciudad</span>
+        <select ng-model="signUpInfo.ciudad">
+          <option>Bogotá</option>
+          <option>Manizales</option>
+          <option>Medellin</option>
+          <option>Cali</option>
+          <option>Santa Marta</option>
+          <option>Cartagena</option>
+          <option>Pereira</option>
+        </select>
+      </label>
+      <!--<ion-item class="item-divider" id="page3-list-item-divider4"> Información financiera</ion-item>
+      <label class="item item-input" id="page3-input16">
+        <input type="text" placeholder="Número de la tarjeta">
+      </label>
+      <label class="item item-input" id="page3-input17">
+        <input type="text" placeholder="Nombre como aparece en la tarjeta">
+      </label>
+      <label class="item item-select" id="page3-select3">
+        <span class="input-label">Mes de vencimiento</span>
+        <select>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+          <option>11</option>
+          <option>12</option>
+        </select>
+      </label>
+      <label class="item item-select" id="page3-select4">
+        <span class="input-label">Año de Vencimiento</span>
+        <select>
+          <option>2017</option>
+          <option>2018</option>
+          <option>2019</option>
+          <option>2020</option>
+        </select>
+      </label>-->
     </form>
     <a ui-sref="page3" id="page2-button4" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" ng-click="signUserUp();">Crear Cuenta</a>
     <div class="list card" id="page2-card23">

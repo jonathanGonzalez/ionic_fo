@@ -8,6 +8,16 @@
         <div class="item item-body" id="page6-list-item-container5">
         <h2 id="page6-heading2" style="color:#000000;text-align:center;">{{producto.descripcion}}</h2>
         <h2 id="page6-heading3" style="color:#000000;text-align:center;">{{producto.valor | currency}}</h2>
+        <form id="page10-form1" class="list">
+            <label class="item item-input" id="page-input3">
+                <span class="input-label">Cantidad</span>
+                <input type="number" ng-model="cantidad" min="1" step="1">
+            </label>
+            <label class="item item-input item-floating-label" id="page-input4">
+                <span class="input-label">Comentarios</span>
+                <input type="text" ng-model="comentarios" placeholder="Comentarios sobre este producto">
+            </label>
+         </form>
         <button id="page6-button6" style="font-weight:500;" class="button button-positive  button-block" ng-click="agregarPedidoId(producto.id);agregarPedidoCompleto(producto)">Agregar</button>
         </div>
     </div>

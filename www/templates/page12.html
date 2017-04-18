@@ -1,103 +1,39 @@
 <ion-view title="Configuración" id="page12">
   <ion-content padding="true" class="has-header">
-    <div>
-      <img src="img/0NCobP6QeCJUV0s7gNBz_header.jpg" style="display: block; width: 60%; height: auto; margin-left: auto; margin-right: auto;">
+  <div class = "row">
+      <div class = "col col-40 col-top">
+        <img src="img/user.jpg" style="margin-top:20px; width: 90%; height: auto; border: dashed 2px #387ef5">
+      </div>
+   <div class = "col col-40 col-bottom " style="margin-left:-40%">
+      <a ui-sref="#/tab/page4" id="page3-button5" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block">Editar</a>
     </div>
-    <form id="page3-form4" class="list">
-          <form id="page2-form2" class="list">
+   <div class = "col">
+     <form id="page3-form4" class="list">
+      <form id="page2-form2" class="list">
       <ion-item class="item-divider" id="page3-list-item-divider3"> Información Personal</ion-item>
-      <label class="item item-input item-floating-label" id="page2-input5">
-        <input type="text" ng-model="signUpInfo.nombre" placeholder="Nombre">
-      </label>
-      <label class="item item-input item-floating-label" id="page2-input6">
-        <input type="text" ng-model="signUpInfo.apellido" placeholder="Apellidos">
-      </label>
-      <label class="item item-input" id="page2-input7">
-        <input type="email" ng-model="signUpInfo.correo" placeholder="Correo electrónico">
-      </label>
-      <label class="item item-input" id="page2-input8">
-        <input type="password" ng-model="signUpInfo.password" placeholder="Contraseña">
-      </label>
-      <label class="item item-input" id="page2-input9">
-        <span class="input-label">Fecha de Nacimiento:</span>
-        <input type="date" ng-model="signUpInfo.fecha">
-      </label>
-      <label class="item item-select" id="page2-select1">
-        <span class="input-label">Género</span>
-        <select ng-model="signUpInfo.genero">
-          <option>Femenino</option>
-          <option>Masculino</option>
-          <option>Otro</option>
-        </select>
-      </label>
-      <ion-item class="item-divider" id="page3-list-item-divider3"> Información Adicional</ion-item>
-      <label class="item item-input item-floating-label" id="page3-input12">
-        <input type="tel" placeholder="Teléfono celular">
-      </label>
-      <label class="item item-input item-floating-label" id="page3-input13">
-        <input type="text" placeholder="Dirección de facturación">
-      </label>
-      <label class="item item-input item-floating-label" id="page3-input14">
-        <input type="text" placeholder="Código postal">
-      </label>
-      <label class="item item-select" id="page3-select2">
-        <span class="input-label">Ciudad</span>
-        <select>
-          <option>Bogotá</option>
-          <option>Manizales</option>
-          <option>Medellin</option>
-          <option>Cali</option>
-          <option>Santa Marta</option>
-          <option>Cartagena</option>
-          <option>Pereira</option>
-        </select>
-      </label>
-     <ul class="list">
-        <li class="item item-toggle">
-          ¿Desea recibir ofertas?
-          <label class="toggle toggle-positive">
-            <input type="checkbox">
-            <div class="track">
-              <div class="handle"></div>
-            </div>
-          </label>
-        </li>
-      </ul>
-      <!--<ion-item class="item-divider" id="page3-list-item-divider4"> Información financiera</ion-item>
-      <label class="item item-input" id="page3-input16">
-        <input type="text" placeholder="Número de la tarjeta">
-      </label>
-      <label class="item item-input" id="page3-input17">
-        <input type="text" placeholder="Nombre como aparece en la tarjeta">
-      </label>
-      <label class="item item-select" id="page3-select3">
-        <span class="input-label">Mes de vencimiento</span>
-        <select>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-        </select>
-      </label>
-      <label class="item item-select" id="page3-select4">
-        <span class="input-label">Año de Vencimiento</span>
-        <select>
-          <option>2017</option>
-          <option>2018</option>
-          <option>2019</option>
-          <option>2020</option>
-        </select>
-      </label>-->
+            <label class="item item-input" id="page-input3">
+                <span class="input-label">Nombre: </span>
+                <h3>{{nombre}}</h3>                
+            </label>
+            <label class="item item-input" id="page-input3">
+                <span class="input-label">Apellidos: </span>
+                <h3>{{apellidos}}</h3>              
+            </label>
+            <label class="item item-input" id="page-input3"  style="word-wrap: break-word">
+                <span class="input-label">Correo: </span>
+                <h3>{{correo}}</h3>                
+            </label>
+            <label class="item item-input" id="page-input3">
+                <span class="input-label">Teléfono: </span>
+                <h3>{{telefono}}</h3>                
+            </label>
+            <label class="item item-input" id="page-input3">
+                <span class="input-label">Ciudad: </span>
+                <h3>{{ciudad}}</h3>                
+            </label>
     </form>
-      <a ui-sref="#/tab/page4" id="page3-button5" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block">Continuar</a>
-    </form>
-  </ion-content>
+    </div>
+</div>
+ <a id="page3-button5" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" ng-click="logout();">Cerrar Sesion</a>
+</ion-content>
 </ion-view>

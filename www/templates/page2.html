@@ -31,17 +31,17 @@
       </label>
       <ion-item class="item-divider" id="page3-list-item-divider3"> Información Adicional</ion-item>
       <label class="item item-input item-floating-label" id="page3-input12">
-        <input type="tel" placeholder="Teléfono celular">
+        <input type="tel" placeholder="Teléfono celular" ng-model="signUpInfo.telefono">
       </label>
       <label class="item item-input item-floating-label" id="page3-input13">
-        <input type="text" placeholder="Dirección de facturación">
+        <input type="text" placeholder="Dirección de facturación" ng-model="signUpInfo.direccion">
       </label>
       <label class="item item-input item-floating-label" id="page3-input14">
-        <input type="text" placeholder="Código postal">
+        <input type="text" placeholder="Código postal" ng-model="signUpInfo.codPostal">
       </label>
       <label class="item item-select" id="page3-select2">
         <span class="input-label">Ciudad</span>
-        <select>
+        <select ng-model="signUpInfo.ciudad">
           <option>Bogotá</option>
           <option>Manizales</option>
           <option>Medellin</option>

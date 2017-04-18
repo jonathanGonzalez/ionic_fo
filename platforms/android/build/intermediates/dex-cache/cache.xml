@@ -3,12 +3,120 @@
 
     <item
         is-multidex="false"
+        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.1_d2f21c68b48e3e21dd1a19199c1afdaa37ccf493.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_e54bc6dc027ad2c2c1684e2bc8931a07e0d2f75e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_e2bcea65866fad35bcbfbe3068d9131966974c82.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.0.1_19890ab6df3a772dc3b6737882abd7c559bc5325.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_67ad93fbbb03a22e56d58ec578bebd5286d83e65.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
         sha1="afe8eb4906b94df000e2b3714c864ec42d4e4ea6">
         <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\CordovaLib-unspecified-debug_56c522fab1988e2c0b20140f4bd6b7bf8bb56fe6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_f0f1db8c4c4f06c7b8e0ff398e44785063c2f1a2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_d903499f6e1cc97619ff98cc1f676aebea80db66.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.1_15beee244c9cc8dadd4b81b082ae7df0e4b068bc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.0.1_9d2bb0d68a68f2344e83cbb2a4f1216aa165bc8f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.1_422b4e1f94b731ce51ac48d05b8ad123407f7cca.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\support-annotations-25.0.1_51ab30143fbff50b8779a9626e6d377c1c44e7c7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_17688168fe6e3d5a24e0bf6b3f854a09089a4371.jar" />
     </item>
 
 </items>
