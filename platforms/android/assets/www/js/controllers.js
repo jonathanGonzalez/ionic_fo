@@ -237,7 +237,7 @@ $http({
                 // error
          });
         //Fin del toast al agregar un carrito
-        }
+    }
    $scope.total = function(){
         var total = 0;
         for(item of $scope.carritoCompleto){
@@ -325,11 +325,11 @@ function ($scope,$window,$cordovaToast, $http) {
             user_id: parseInt(localStorage['user_id'])
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/perfil.php", data).success(function(respuesta){
-            $scope.nombre = respuesta[0].use_nombre;       
-            $scope.apellidos = respuesta[0].use_apellidos;       
-            $scope.correo = respuesta[0].use_correo;       
-            $scope.telefono = respuesta[0].use_telefono;       
-            $scope.ciudad = respuesta[0].use_ciudad;       
+            $rootScope.nombre = respuesta[0].use_nombre;       
+            $rootScope.correo = respuesta[0].use_correo;       
+            $rootScope.apellidos = respuesta[0].use_apellidos;       
+            $rootScope.telefono = respuesta[0].use_telefono;       
+            $rootScope.ciudad = respuesta[0].use_ciudad;       
 
         }).error(function(error){
            console.log(error);   
@@ -340,5 +340,19 @@ function ($scope,$window,$cordovaToast, $http) {
       localStorage.clear();
       $window.location = "#/page1";
   }
+  $scope.editPerfil = function(){
+      
+  }
+
+}])
+.controller('page13Ctrl', ['$scope', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $window) {
+    if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  }
+
+  
 
 }])

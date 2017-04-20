@@ -184,18 +184,34 @@ function ($scope, $http, $window,$ionicPopup) {
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/login.php", data).success(function(response){
             console.log(response); 
+            if (response.length == 0){
+                var alertPopup = $ionicPopup.alert({
+                      title: 'algo ha ocurrido',
+                      template: 'No ha sido posible iniciar sesion. Intente nuevamente.',
+                      cssClass: 'dark',
+                      okType: 'button-positive'
+                    }); 
+            }
+            else {
+            console.log(localStorage['user_id']);
             localStorage.setItem("user_id", response[0].use_id);
-
-                    var alertPopup = $ionicPopup.alert({
+             var alertPopup = $ionicPopup.alert({
                       title: 'Sr. Usuario',
                       template: 'Nos alegra que estés de regreso en FreeOrdeR.',
                       cssClass: 'dark',
                       okType: 'button-positive'
                     });
             $window.location = "#/tab/page4";
+            }               
                   
         }).error(function(error){
-           console.log(error);   
+           console.log(error);  
+           var alertPopup = $ionicPopup.alert({
+                      title: 'Usuario',
+                      template: 'Compruebe su conexión a internet e intente nuevamente.',
+                      cssClass: 'dark',
+                      okType: 'button-positive'
+                    }); 
         });
     };
 
@@ -237,7 +253,7 @@ $http({
                 // error
          });
         //Fin del toast al agregar un carrito
-        }
+    }
    $scope.total = function(){
         var total = 0;
         for(item of $scope.carritoCompleto){
@@ -297,6 +313,9 @@ $http({
         }).error(function(error){
             //console.error(error);
         });
+        ///////SE VACIA EL CARRITO DE COMPRAS///////
+            $scope.carritoId.length=0;
+        ///////FIN DEL VACIO DEL CARRITO///////////
        } else {
         //Toast al hacer un pedido
          $cordovaToast.showLongBottom('Ha cancelado su pedido').then(function(success) {
@@ -311,10 +330,10 @@ $http({
    
 }])
 
-.controller('page12Ctrl', ['$scope', '$window', '$cordovaToast', '$http',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('page12Ctrl', ['$scope', '$window', '$cordovaToast', '$http', '$rootScope', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope,$window,$cordovaToast, $http) {
+function ($scope,$window,$cordovaToast, $http, $rootScope) {
  if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
   }
@@ -325,10 +344,15 @@ function ($scope,$window,$cordovaToast, $http) {
             user_id: parseInt(localStorage['user_id'])
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/perfil.php", data).success(function(respuesta){
-            $scope.nombre = respuesta[0].use_nombre;       
-            $scope.apellidos = respuesta[0].use_apellidos;       
-            $scope.correo = respuesta[0].use_correo;       
-            $scope.telefono = respuesta[0].use_telefono;       
+            $scope.nombre = respuesta[0].use_nombre; 
+            $scope.apellidos = respuesta[0].use_apellidos; 
+            $scope.correo = respuesta[0].use_correo;   
+            $scope.password = respuesta[0].use_contrasena;   
+            $scope.fecha = respuesta[0].use_fecha_nacimiento;   
+            $scope.genero = respuesta[0].use_genero;   
+            $scope.telefono = respuesta[0].use_telefono;      
+            $scope.direccion = respuesta[0].use_direccion;    
+            $scope.codPostal = respuesta[0].use_codPostal;    
             $scope.ciudad = respuesta[0].use_ciudad;       
 
         }).error(function(error){
@@ -340,5 +364,65 @@ function ($scope,$window,$cordovaToast, $http) {
       localStorage.clear();
       $window.location = "#/page1";
   }
+  $scope.editPerfil = function(){
+    $window.location ="#/tab/page13";
+}
+
+}])
+.controller('page13Ctrl', ['$scope', '$window', '$cordovaToast', '$http', '$rootScope', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope,$window,$cordovaToast, $http, $rootScope) {
+    if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  }
+
+  
+        var data = {
+            user_id: parseInt(localStorage['user_id'])
+        }
+        $http.post("http://co-workers.com.co/adaris/freeorder/api/perfil.php", data).success(function(respuesta){
+            $scope.nombre = respuesta[0].use_nombre; 
+            $scope.apellidos = respuesta[0].use_apellidos; 
+            $scope.correo = respuesta[0].use_correo;   
+            $scope.password = respuesta[0].use_contrasena;   
+            $scope.fecha = respuesta[0].use_fecha_nacimiento;   
+            $scope.genero = respuesta[0].use_genero;   
+            $scope.telefono = respuesta[0].use_telefono;      
+            $scope.direccion = respuesta[0].use_direccion;    
+            $scope.codPostal = respuesta[0].use_codPostal;    
+            $scope.ciudad = respuesta[0].use_ciudad;       
+
+        }).error(function(error){
+           console.log(error);   
+        });
+
+  /////////FIN DE LA INFO DEL USUARIO////////////
+    //////////////ACTUALIZAR PERFIL/////////////////
+
+  $scope.actPerfil = function(){
+var data = {
+            user_id: parseInt(localStorage['user_id']),
+            nombre: $scope.nombre,
+            apellidos: $scope.apellidos,
+            correo: $scope.correo,
+            password: $scope.password,
+            fecha: $scope.fecha,
+            genero: $scope.genero,
+            telefono: $scope.telefono,
+            direccion: $scope.direccion,
+            codPostal: $scope.codPostal,
+            ciudad: $scope.ciudad
+        }
+        $http.post("http://co-workers.com.co/adaris/freeorder/api/actPerfil.php", data).success(function(response){
+            console.log(response); 
+             alert('ha actualizado con exito');         
+            $window.location = "#/tab/page12";  
+                  
+        }).error(function(error){
+           console.log(error);   
+        });
+
+}  //////////FIN DE ACTUALIZAR PERFIL//////////
 
 }])

@@ -1,12 +1,6 @@
 <ion-view title="Configuración" id="page12">
   <ion-content padding="true" class="has-header">
   <div class = "row">
-      <div class = "col col-40 col-top">
-        <img src="img/user.jpg" style="margin-top:20px; width: 90%; height: auto; border: dashed 2px #387ef5">
-      </div>
-   <div class = "col col-40 col-bottom " style="margin-left:-40%">
-      <a ui-sref="#/tab/page4" id="page3-button5" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block">Editar</a>
-    </div>
    <div class = "col">
      <form id="page3-form4" class="list">
       <form id="page2-form2" class="list">
@@ -34,6 +28,13 @@
     </form>
     </div>
 </div>
- <a id="page3-button5" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" ng-click="logout();">Cerrar Sesion</a>
+<div class="row">
+<div class = "col col-50 ">
+      <a id="page12-button5" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" ng-click="editPerfil();">Editar</a>
+</div>
+<div class = "col col-50 ">
+ <a id="page12-button6" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" ng-click="logout();">Cerrar Sesion</a>
+</div>
+</div>
 </ion-content>
 </ion-view>

@@ -21,7 +21,7 @@
     margin-bottom: 19px;
 }
 .bar.bar-positive {
-    border-color: #CD3728;
-    background-color: #CD3728;
-    background-image: linear-gradient(0deg, #CD3728, #CD3728 50%, transparent 50%);
+    border-color: #ffc900;
+    background-color: #ffc900;
+    background-image: linear-gradient(0deg, #ffc900, #ffc900 50%, transparent 50%);
     color: #fff; }
