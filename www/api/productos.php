@@ -41,6 +41,8 @@ $postdata = file_get_contents("php://input");
         $producto["descripcion"] = $row['pro_descripcion'];
 		$producto["valor"]       = $row['pro_valor'];
 		$producto["imagen"]      = $row['pro_image'];
+		$producto["comentario"]  = $row['pro_comentario'];
+		$producto["cantidad"]  	 = $row['pro_cantidad'];
 	   	
        
 	   

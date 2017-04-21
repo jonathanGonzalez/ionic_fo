@@ -65,14 +65,10 @@ function ($scope, $http, $window,$cordovaLocalNotification) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope,$window) {
- if(localStorage['user_id'] === undefined){
+/* if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
-  }
-    //localStorage.setItem("prueba", "infor de prueba en localStorage");
-
-/*if(localStorage['correo'] === undefined){
-    $window.location = "#/page9";
   }*/
+
 
 }])
    
@@ -102,6 +98,7 @@ function ($scope, $window, $http) {
     if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
   } 
+  
    $http({
        url:"http://co-workers.com.co/adaris/freeorder/api/restaurantes.php",
        method:"POST",
@@ -154,6 +151,7 @@ function ($scope, $window) {
     if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
   }
+  
 
 }])
 
@@ -232,19 +230,20 @@ $http({
        headers: {'Content-type': 'application/x-www-form-urlencoded'}
    }).then(
        function(respuesta){          
-        $scope.productos = respuesta.data;    
-       }
-   ); 
+        $scope.productos = respuesta.data;
+     }
+   );  
   
     //agregar productos al carrito de compras
         $scope.carritoId = [];    
-        $scope.agregarPedidoId = function(_item){               
-        $scope.carritoId.push(_item);
+        $scope.agregarPedidoId = function(_item, _comentario, _cantidad){               
+        $scope.carritoId.push(_item, _comentario, _cantidad);
         localStorage.setItem('pedido',JSON.stringify($scope.carritoId));
 }   
         $rootScope.carritoCompleto = [];
         $scope.agregarPedidoCompleto = function(_productoCompleto){
         $scope.carritoCompleto.push(_productoCompleto);
+        
         //Toast al agregar un producto
         $cordovaToast.showLongBottom('El producto se ha agregado a su carrito de compras').then(function(success) {
                 // success
@@ -368,10 +367,10 @@ function ($scope,$window,$cordovaToast, $http, $rootScope) {
 }
 
 }])
-.controller('page13Ctrl', ['$scope', '$window', '$cordovaToast', '$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('page13Ctrl', ['$scope', '$window', '$cordovaToast', '$http', '$ionicPopup', '$ionicHistory', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $window, $cordovaToast, $http) {
+function ($scope, $window, $cordovaToast, $http, $ionicPopup, $ionicHistory) {
     if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
   }
@@ -406,9 +405,15 @@ function ($scope, $window, $cordovaToast, $http) {
             ciudad: $scope.actUser.ciudad
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/actPerfil.php", data).success(function(response){
-            console.log(response);        
-            $window.location = "#/tab/page12";  
-                  
+            console.log(response);  
+            var alertPopup = $ionicPopup.alert({
+                      title: $scope.actUser.nombre,
+                      template: 'Ha actualizado su perfil correctamente',
+                      cssClass: 'dark',
+                      okType: 'button-positive'
+                    });    
+            $ionicHistory.clearCache().then(function(){ $window.location = '#/tab/page12';});  
+    
         }).error(function(error){
            console.log(error);   
         });

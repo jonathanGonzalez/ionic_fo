@@ -119,6 +119,15 @@ angular.module('app.routes', [])
      }
   })
 
+  .state('tab.page13', {
+    url: '/page13',    
+    views: {
+      'tab-page12': { 
+        templateUrl: 'templates/page13.html', 
+        controller: 'page13Ctrl'
+      }
+     }
+  })
 $urlRouterProvider.otherwise('/tab/page4')
 
 });

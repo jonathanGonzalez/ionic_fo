@@ -184,18 +184,33 @@ function ($scope, $http, $window,$ionicPopup) {
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/login.php", data).success(function(response){
             console.log(response); 
+            if (response.length == 0){
+                var alertPopup = $ionicPopup.alert({
+                      title: 'algo ha ocurrido',
+                      template: 'No ha sido posible iniciar sesion. Intente nuevamente.',
+                      cssClass: 'dark',
+                      okType: 'button-positive'
+                    }); 
+            }
+            else {
             localStorage.setItem("user_id", response[0].use_id);
-
-                    var alertPopup = $ionicPopup.alert({
+             var alertPopup = $ionicPopup.alert({
                       title: 'Sr. Usuario',
                       template: 'Nos alegra que estés de regreso en FreeOrdeR.',
                       cssClass: 'dark',
                       okType: 'button-positive'
                     });
             $window.location = "#/tab/page4";
+            }               
                   
         }).error(function(error){
-           console.log(error);   
+           console.log(error);  
+           var alertPopup = $ionicPopup.alert({
+                      title: 'Usuario',
+                      template: 'Compruebe su conexión a internet e intente nuevamente.',
+                      cssClass: 'dark',
+                      okType: 'button-positive'
+                    }); 
         });
     };
 
@@ -297,6 +312,9 @@ $http({
         }).error(function(error){
             //console.error(error);
         });
+        ///////SE VACIA EL CARRITO DE COMPRAS///////
+            $scope.carritoId.length=0;
+        ///////FIN DEL VACIO DEL CARRITO///////////
        } else {
         //Toast al hacer un pedido
          $cordovaToast.showLongBottom('Ha cancelado su pedido').then(function(success) {
@@ -311,10 +329,10 @@ $http({
    
 }])
 
-.controller('page12Ctrl', ['$scope', '$window', '$cordovaToast', '$http',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('page12Ctrl', ['$scope', '$window', '$cordovaToast', '$http', '$rootScope', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope,$window,$cordovaToast, $http) {
+function ($scope,$window,$cordovaToast, $http, $rootScope) {
  if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
   }
@@ -325,10 +343,15 @@ function ($scope,$window,$cordovaToast, $http) {
             user_id: parseInt(localStorage['user_id'])
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/perfil.php", data).success(function(respuesta){
-            $rootScope.nombre = respuesta[0].use_nombre;       
-            $rootScope.correo = respuesta[0].use_correo;       
-            $rootScope.apellidos = respuesta[0].use_apellidos;       
-            $rootScope.telefono = respuesta[0].use_telefono;       
+            $rootScope.nombre = respuesta[0].use_nombre; 
+            $rootScope.apellidos = respuesta[0].use_apellidos; 
+            $rootScope.correo = respuesta[0].use_correo;   
+            $rootScope.password = respuesta[0].use_contrasena;   
+            $rootScope.fecha = respuesta[0].use_fecha_nacimiento;   
+            $rootScope.genero = respuesta[0].use_genero;   
+            $rootScope.telefono = respuesta[0].use_telefono;      
+            $rootScope.direccion = respuesta[0].use_direccion;    
+            $rootScope.codPostal = respuesta[0].use_codPostal;    
             $rootScope.ciudad = respuesta[0].use_ciudad;       
 
         }).error(function(error){
@@ -341,18 +364,61 @@ function ($scope,$window,$cordovaToast, $http) {
       $window.location = "#/page1";
   }
   $scope.editPerfil = function(){
-      
-  }
+    $window.location ="#/tab/page13";
+}
 
 }])
-.controller('page13Ctrl', ['$scope', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('page13Ctrl', ['$scope', '$window', '$cordovaToast', '$http', '$ionicPopup', '$ionicHistory', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $window) {
+function ($scope, $window, $cordovaToast, $http, $ionicPopup, $ionicHistory) {
     if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
   }
 
-  
+  /////////FIN DE LA INFO DEL USUARIO////////////
+  $scope.actUser = {
+        nombre : $scope.nombre,
+        apellido : $scope.apellidos,
+        correo : $scope.correo,
+        password : $scope.password,
+        fecha : $scope.fecha,        
+        genero : $scope.genero,
+        telefono: $scope.telefono,
+        direccion: $scope.direccion,
+        codPostal: $scope.codPostal,
+        ciudad: $scope.ciudad
+    }
+    //////////////ACTUALIZAR PERFIL/////////////////
+
+  $scope.actPerfil = function(){
+        var data = {
+            user_id: parseInt(localStorage['user_id']),
+            nombre: $scope.actUser.nombre,
+            apellidos: $scope.actUser.apellidos,
+            correo: $scope.correo,
+            password: $scope.actUser.password,
+            fecha: $scope.actUser.fecha,
+            genero: $scope.actUser.genero,
+            telefono: $scope.actUser.telefono,
+            direccion: $scope.actUser.direccion,
+            codPostal: $scope.actUser.codPostal,
+            ciudad: $scope.actUser.ciudad
+        }
+        $http.post("http://co-workers.com.co/adaris/freeorder/api/actPerfil.php", data).success(function(response){
+            console.log(response);  
+            var alertPopup = $ionicPopup.alert({
+                      title: $scope.actUser.nombre,
+                      template: 'Ha actualizado su perfil correctamente',
+                      cssClass: 'dark',
+                      okType: 'button-positive'
+                    });    
+            $ionicHistory.clearCache().then(function(){ $window.location = '#/tab/page12';});  
+    
+        }).error(function(error){
+           console.log(error);   
+        });
+
+}  //////////FIN DE ACTUALIZAR PERFIL//////////
 
 }])

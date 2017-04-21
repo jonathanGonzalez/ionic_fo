@@ -8,13 +8,12 @@
         <img src="{{producto.imagen}}">
         <h2positive>{{producto.nombre}}
           <p style="white-space:normal;">{{producto.valor | currency}}</p>
-        </h2positive>
-        
+        </h2positive>        
          <label class="item item-input item-floating-label" id="page10-input1">
-        <input type="number" ng-value="{{cantidad}}" placeholder="Cantidad" ng-model="cantidad" min="1">
+        <input type="number" ng-value="producto.cantidad" placeholder="Cantidad" ng-model="producto.cantidad" min="1" step="1" max="50">
       </label>
        <label class="item item-input item-floating-label" id="page10-input2">
-        <input type="text" ng-model="comentario" placeholder="Comentario:" ng-value="{{comentario}}"/>
+        <input type="text" ng-model="producto.comentario" placeholder="Comentario:" ng-value="producto.comentario"/>
       </label>
       </ion-item>
     </div>
