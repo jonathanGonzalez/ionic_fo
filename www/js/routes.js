@@ -128,7 +128,6 @@ angular.module('app.routes', [])
       }
      }
   })
-
 $urlRouterProvider.otherwise('/tab/page4')
 
 });

@@ -1,64 +1,64 @@
-k<ion-view title="Editar Perfil" id="page13">
-  <ion-content padding="true" class="has-header">
-    <div>
-      <img src="img/GAks9KalSBqqZvyBKRwz_header.jpg" style="display: block; width: 60%; height: auto; margin-left: auto; margin-right: auto;">
-    </div>
-    <form id="page2-form2" class="list">
-      <ion-item class="item-divider" id="page3-list-item-divider3"> Información Personal</ion-item>
-      <label class="item item-input item-floating-label" id="page2-input5">
-        <input type="text" ng-model="nombre" value="{{nombre}}" placeholder="Nombre">
-      </label>
-      <label class="item item-input item-floating-label" id="page2-input6">
-        <input type="text" ng-model="apellidos" value="{{apellidos}}" placeholder="Apellidos">
-      </label>
-      <label class="item item-input item-floating-label" id="page2-input6">
-        <input type="text"  ng-disabled="true" ng-model="correo" value="{{correo}}" placeholder="Correo">
-      </label>
-      <label class="item item-input" id="page2-input8">
-        <input type="password" ng-model="password" value="{{password}}"  placeholder="Contraseña">
-      </label>
-      <label class="item item-input" id="page2-input9">
-        <span class="input-label">Fecha de Nacimiento:</span>
-        <input type="date" value="{{fecha}}" ng-model="fecha">
-      </label>
-      <label class="item item-select" id="page2-select1">
-        <span class="input-label">Género</span>
-        <select value="{{genero}}"  ng-model="genero">
-          <option>Femenino</option>
-          <option>Masculino</option>
-          <option>Otro</option>
-        </select>
-      </label>
-      <ion-item class="item-divider" id="page3-list-item-divider3"> Información Adicional</ion-item>
-      <label class="item item-input item-floating-label" id="page3-input12">
-        <input type="tel" placeholder="Teléfono celular" value="{{telefono}}" ng-model="telefono">
-      </label>
-      <label class="item item-input item-floating-label" id="page3-input13">
-        <input type="text" placeholder="Dirección de facturación" value="{{direccion}}" ng-model="direccion">
-      </label>
-      <label class="item item-input item-floating-label" id="page3-input14">
-        <input type="text" placeholder="Código postal" value="{{codPostal}}" ng-model="codPostal">
-      </label>
-      <label class="item item-select" id="page3-select2">
-        <span class="input-label">Ciudad</span>
-        <select value="{{ciudad}}" ng-model="ciudad">
-          <option>Bogotá</option>
-          <option>Manizales</option>
-          <option>Medellin</option>
-          <option>Cali</option>
-          <option>Santa Marta</option>
-          <option>Cartagena</option>
-          <option>Pereira</option>
-        </select>
-      </label>
-    </form>
-    <div class="row">
-    <div class = "col col-50 ">
-      <a id="page2-button4" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" ng-click="actPerfil();">Actualizar datos</a>
-  </div>
-    <div class = "col col-50 ">
-      <a id="page12-button6" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" href ="#/tab/page12">Cancelar</a>
-    </div>
-    </div>
-    </ion-content>
+<ion-view title="Editar Perfil" id="page13">
+	<ion-content padding="true" class="has-header">
+		<div>
+			<img src="img/GAks9KalSBqqZvyBKRwz_header.jpg" style="display: block; width: 60%; height: auto; margin-left: auto; margin-right: auto;">
+		</div>
+		<form id="page13-form1" class="list">
+			<ion-item class="item-divider" id="page13-list-item-divider3"> Información Personal</ion-item>
+			<label class="item item-input item-floating-label" id="page13-input5">
+				<input type="text" ng-value="nombre" ng-model="actUser.nombre" placeholder="Nombre">
+			</label>
+			<label class="item item-input item-floating-label" id="page13-input6">
+				<input type="text" ng-value="apellidos" ng-model="actUser.apellidos"  placeholder="Apellidos">
+			</label>
+			<label class="item item-input item-floating-label" id="page13-input6">
+				<input type="email" ng-disabled="true" ng-model="correo" placeholder="Correo">
+			</label>
+			<label class="item item-input" id="page13-input8">
+				<input type="password" ng-value="password" ng-model="actUser.password"  placeholder="Contraseña">
+			</label>
+			<label class="item item-input" id="page13-input9">
+				<span class="input-label">Fecha de Nacimiento:</span>
+				<input type="date" ng-value="fecha" ng-model="actUser.fecha">
+			</label>
+			<label class="item item-select" id="page13-select1">
+				<span class="input-label">Género</span>
+				<select ng-value="genero" ng-model="actUser.genero">
+					<option>Femenino</option>
+					<option>Masculino</option>
+					<option>Otro</option>
+				</select>
+			</label>
+			<ion-item class="item-divider" id="page13-list-item-divider3"> Información Adicional</ion-item>
+			<label class="item item-input item-floating-label" id="page13-input12">
+				<input type="tel" ng-value="telefono"  placeholder="Teléfono celular" ng-model="actUser.telefono">
+			</label>
+			<label class="item item-input item-floating-label" id="page13-input13">
+				<input type="text" ng-value="direccion" placeholder="Dirección de facturación"  ng-model="actUser.direccion">
+			</label>
+			<label class="item item-input item-floating-label" id="page13-input14">
+				<input type="text" ng-value="codPostal" placeholder="Código postal"  ng-model="actUser.codPostal">
+			</label>
+			<label class="item item-select" id="page13-select2">
+				<span class="input-label">Ciudad</span>
+				<select ng-value="ciudad" ng-model="actUser.ciudad">
+					<option>Bogotá</option>
+					<option>Manizales</option>
+					<option>Medellin</option>
+					<option>Cali</option>
+					<option>Santa Marta</option>
+					<option>Cartagena</option>
+					<option>Pereira</option>
+				</select>
+			</label>
+		<div class="row">
+		<div class = "col col-50 ">
+			<a id="page13-button4" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" ng-click="actPerfil()">Actualizar datos</a>
+	</div>
+		<div class = "col col-50 ">
+			<a id="page12-button6" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" href ="#/tab/page12">Cancelar</a>
+		</div>
+		</div>
+		 </form>
+		</ion-content>
 </ion-view>
