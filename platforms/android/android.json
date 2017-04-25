@@ -35,6 +35,10 @@
                         {
                             "xml": "<feature name=\"LocalNotification\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.localnotification.LocalNotification\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BarcodeScanner\"><param name=\"android-package\" value=\"com.phonegap.plugins.barcodescanner.BarcodeScanner\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -69,6 +73,14 @@
                         {
                             "xml": "<activity android:exported=\"false\" android:launchMode=\"singleInstance\" android:name=\"de.appplant.cordova.plugin.notification.ClickActivity\" android:theme=\"@android:style/Theme.NoDisplay\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<activity android:clearTaskOnLaunch=\"true\" android:configChanges=\"orientation|keyboardHidden|screenSize\" android:exported=\"false\" android:name=\"com.google.zxing.client.android.CaptureActivity\" android:theme=\"@android:style/Theme.NoTitleBar.Fullscreen\" android:windowSoftInputMode=\"stateAlwaysHidden\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:label=\"Share\" android:name=\"com.google.zxing.client.android.encode.EncodeActivity\" />",
+                            "count": 1
                         }
                     ],
                     "/manifest": [
@@ -78,6 +90,18 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.CAMERA\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.FLASHLIGHT\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-feature android:name=\"android.hardware.camera\" android:required=\"true\" />",
                             "count": 1
                         }
                     ]
@@ -111,6 +135,12 @@
             "PACKAGE_NAME": "com.ionicframework.freeorder351590"
         },
         "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "com.ionicframework.freeorder351590"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.freeorder351590"
+        },
+        "phonegap-plugin-barcodescanner": {
             "PACKAGE_NAME": "com.ionicframework.freeorder351590"
         }
     },
@@ -188,6 +218,14 @@
                 "cordova.plugins.notification.local.core",
                 "plugin.notification.local.core"
             ]
+        },
+        {
+            "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+            "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+            "pluginId": "phonegap-plugin-barcodescanner",
+            "clobbers": [
+                "cordova.plugins.barcodeScanner"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -199,6 +237,8 @@
         "ionic-plugin-keyboard": "2.2.1",
         "cordova-plugin-x-toast": "2.6.0",
         "cordova-plugin-app-event": "1.2.0",
-        "de.appplant.cordova.plugin.local-notification": "0.8.4"
+        "de.appplant.cordova.plugin.local-notification": "0.8.4",
+        "cordova-plugin-compat": "1.1.0",
+        "phonegap-plugin-barcodescanner": "6.0.6"
     }
 }

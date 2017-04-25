@@ -72,6 +72,14 @@ module.exports = [
             "cordova.plugins.notification.local.core",
             "plugin.notification.local.core"
         ]
+    },
+    {
+        "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+        "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+        "pluginId": "phonegap-plugin-barcodescanner",
+        "clobbers": [
+            "cordova.plugins.barcodeScanner"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -85,7 +93,9 @@ module.exports.metadata =
     "ionic-plugin-keyboard": "2.2.1",
     "cordova-plugin-x-toast": "2.6.0",
     "cordova-plugin-app-event": "1.2.0",
-    "de.appplant.cordova.plugin.local-notification": "0.8.4"
+    "de.appplant.cordova.plugin.local-notification": "0.8.4",
+    "cordova-plugin-compat": "1.1.0",
+    "phonegap-plugin-barcodescanner": "6.0.6"
 };
 // BOTTOM OF METADATA
 });

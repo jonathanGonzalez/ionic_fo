@@ -65,14 +65,10 @@ function ($scope, $http, $window,$cordovaLocalNotification) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope,$window) {
- if(localStorage['user_id'] === undefined){
+/* if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
-  }
-    //localStorage.setItem("prueba", "infor de prueba en localStorage");
-
-/*if(localStorage['correo'] === undefined){
-    $window.location = "#/page9";
   }*/
+
 
 }])
    
@@ -102,6 +98,7 @@ function ($scope, $window, $http) {
     if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
   } 
+  
    $http({
        url:"http://co-workers.com.co/adaris/freeorder/api/restaurantes.php",
        method:"POST",
@@ -154,6 +151,7 @@ function ($scope, $window) {
     if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
   }
+  
 
 }])
 
@@ -232,19 +230,20 @@ $http({
        headers: {'Content-type': 'application/x-www-form-urlencoded'}
    }).then(
        function(respuesta){          
-        $scope.productos = respuesta.data;    
-       }
-   ); 
+        $scope.productos = respuesta.data;
+     }
+   );  
   
     //agregar productos al carrito de compras
         $scope.carritoId = [];    
-        $scope.agregarPedidoId = function(_item){               
-        $scope.carritoId.push(_item);
+        $scope.agregarPedidoId = function(_item, _comentario, _cantidad){               
+        $scope.carritoId.push(_item, _comentario, _cantidad);
         localStorage.setItem('pedido',JSON.stringify($scope.carritoId));
 }   
         $rootScope.carritoCompleto = [];
         $scope.agregarPedidoCompleto = function(_productoCompleto){
         $scope.carritoCompleto.push(_productoCompleto);
+        
         //Toast al agregar un producto
         $cordovaToast.showLongBottom('El producto se ha agregado a su carrito de compras').then(function(success) {
                 // success
@@ -256,8 +255,10 @@ $http({
    $scope.total = function(){
         var total = 0;
         for(item of $scope.carritoCompleto){
-            var precio = parseInt(item.valor);            
-            total += precio;
+            var cantidad = parseInt(item.cantidad);
+            var precio = parseInt(item.valor); 
+            var valProducto = (cantidad * precio);           
+            total += valProducto;
         }
         return total;        
     }
@@ -420,5 +421,33 @@ function ($scope, $window, $cordovaToast, $http, $ionicPopup, $ionicHistory) {
         });
 
 }  //////////FIN DE ACTUALIZAR PERFIL//////////
+
+}])
+
+.controller('scannerCtrl', ['$scope', '$window', '$cordovaBarcodeScanner', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $window, $cordovaBarcodeScanner){
+    if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  }
+      $scope.scanner = function (){
+      cordova.plugins.barcodeScanner.scan(
+      function (result) {
+                var datos = result.text.split(",");;
+                localStorage.setItem("restId", datos[0]); 
+                localStorage.setItem("mesa", datos[1]);               
+                $window.location = "#/tab/page6";
+
+      },
+      function (error) {
+          alert("Scaner fallido: " + error);
+      },
+      {
+          showTorchButton : true, // iOS and Android
+          torchOn: false, // Android, launch with the torch switched on (if available)
+      }
+      );
+ };
 
 }])

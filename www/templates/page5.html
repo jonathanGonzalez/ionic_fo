@@ -1,10 +1,14 @@
 <ion-view title="Restaurantes" id="page5">
   <ion-content padding="true" class="has-header">
+    <label class="item item-input "> 
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" placeholder="Buscar restaurante" ng-model="buscar">
+    </label>
     <div>
       <img src="img/siYrzrgyQ6awHrqmCej0_header.jpg" style="display: block; width: 60%; height: auto; margin-left: auto; margin-right: auto;">
     </div>
     <ion-list id="page5-list4">
-      <ion-item class="item-thumbnail-left" id="page4-list-item7" ng-click="consul_Carta(restaurante.id);" ng-repeat="restaurante in restaurantes">
+      <ion-item class="item-thumbnail-left" id="page4-list-item7" ng-click="consul_Carta(restaurante.id);" ng-repeat="restaurante in restaurantes | filter:buscar">
         <img src="{{restaurante.imagen}}">
         <h2>{{restaurante.nombre}}</h2>
         <p>{{restaurante.descripcion}}</p>

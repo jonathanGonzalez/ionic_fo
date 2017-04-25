@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:2:1-27:12
+ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:2:1-32:12
 	package
 		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:2:98-142
 		INJECTED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml
@@ -36,13 +36,14 @@ ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\
 	android:name
 		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:4:22-64
 application
-ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:5:5-23:19
+ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:5:5-25:19
 MERGED from [com.android.support:support-v4:25.0.1] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.0.1] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-media-compat:25.0.1] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-core-utils:25.0.1] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-core-ui:25.0.1] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-fragment:25.0.1] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\AndroidManifest.xml:25:5-20
+MERGED from [:barcodescanner:] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\barcodescanner\AndroidManifest.xml:11:5-14:19
 	android:label
 		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:5:81-113
 	android:supportsRtl
@@ -51,6 +52,8 @@ MERGED from [com.android.support:support-fragment:25.0.1] C:\xampp\htdocs\Co-Wor
 		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:5:18-52
 	android:icon
 		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:5:53-80
+	android:allowBackup
+		ADDED from [:barcodescanner:] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\barcodescanner\AndroidManifest.xml:12:9-35
 activity#com.ionicframework.freeorder351590.MainActivity
 ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:6:9-11:20
 	android:label
@@ -133,26 +136,63 @@ ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\
 		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:22:149-195
 	android:name
 		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:22:80-148
+activity#com.google.zxing.client.android.CaptureActivity
+ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:23:9-311
+	android:clearTaskOnLaunch
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:23:19-51
+	android:exported
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:23:114-138
+	android:windowSoftInputMode
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:23:261-308
+	android:configChanges
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:23:52-113
+	android:theme
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:23:202-260
+	android:name
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:23:139-201
+activity#com.google.zxing.client.android.encode.EncodeActivity
+ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:24:9-112
+	android:label
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:24:19-40
+	android:name
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:24:41-109
 uses-sdk
-ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:24:5-74
+ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:26:5-74
 MERGED from [com.android.support:support-v4:25.0.1] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-compat:25.0.1] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-media-compat:25.0.1] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\AndroidManifest.xml:21:5-23:63
 MERGED from [com.android.support:support-core-utils:25.0.1] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-core-ui:25.0.1] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-fragment:25.0.1] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\AndroidManifest.xml:21:5-23:60
+MERGED from [:barcodescanner:] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\barcodescanner\AndroidManifest.xml:7:5-9:41
 MERGED from [android:CordovaLib:unspecified:debug] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\AndroidManifest.xml:25:5-44
 	tools:overrideLibrary
 		ADDED from [com.android.support:support-v4:25.0.1] C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\AndroidManifest.xml:23:9-51
 	android:targetSdkVersion
-		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:24:42-71
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:26:42-71
 	android:minSdkVersion
-		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:24:15-41
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:26:15-41
+		INJECTED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml
+		INJECTED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:25:5-81
+ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:27:5-81
 	android:name
-		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:25:22-78
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:27:22-78
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:26:5-81
+ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:28:5-81
 	android:name
-		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:26:22-78
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:28:22-78
+uses-permission#android.permission.CAMERA
+ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:29:5-65
+	android:name
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:29:22-62
+uses-permission#android.permission.FLASHLIGHT
+ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:30:5-69
+	android:name
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:30:22-66
+uses-feature#android.hardware.camera
+ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:31:5-84
+	android:required
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:31:58-81
+	android:name
+		ADDED from C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\AndroidManifest.xml:31:19-57

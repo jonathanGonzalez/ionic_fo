@@ -255,8 +255,10 @@ $http({
    $scope.total = function(){
         var total = 0;
         for(item of $scope.carritoCompleto){
-            var precio = parseInt(item.valor);            
-            total += precio;
+            var cantidad = parseInt(item.cantidad);
+            var precio = parseInt(item.valor); 
+            var valProducto = (cantidad * precio);           
+            total += valProducto;
         }
         return total;        
     }
@@ -419,5 +421,33 @@ function ($scope, $window, $cordovaToast, $http, $ionicPopup, $ionicHistory) {
         });
 
 }  //////////FIN DE ACTUALIZAR PERFIL//////////
+
+}])
+
+.controller('scannerCtrl', ['$scope', '$window', '$cordovaBarcodeScanner', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $window, $cordovaBarcodeScanner){
+    if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  }
+      $scope.scanner = function (){
+      cordova.plugins.barcodeScanner.scan(
+      function (result) {
+                var datos = result.text.split(",");;
+                localStorage.setItem("restId", datos[0]); 
+                localStorage.setItem("mesa", datos[1]);               
+                $window.location = "#/tab/page6";
+
+      },
+      function (error) {
+          alert("Scaner fallido: " + error);
+      },
+      {
+          showTorchButton : true, // iOS and Android
+          torchOn: false, // Android, launch with the torch switched on (if available)
+      }
+      );
+ };
 
 }])

@@ -118,5 +118,14 @@
         sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
         <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_17688168fe6e3d5a24e0bf6b3f854a09089a4371.jar" />
     </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\exploded-aar\barcodescanner\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="7c37db119e266ef17f7c29ad7afe4dfdcecacc16">
+        <dex dex="C:\xampp\htdocs\Co-Workers\APPS\Freeorder\ionic_fo\platforms\android\build\intermediates\pre-dexed\debug\intermediates-exploded-aar-barcodescanner_a665c39ebe2f0918ee688ec0c77480863def8777.jar" />
+    </item>
 
 </items>

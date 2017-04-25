@@ -1,4 +1,4 @@
-<ion-view title="Page" id="page10"  class="bar-positive">
+<ion-view title="Productos" id="page10"  class="bar-positive">
   <ion-content padding="true" class="has-header">
     <div ng-repeat="producto in productos">
         <h1 id="page6-heading1" style="color:#000000;text-align:center;">{{producto.nombre}}</h1>
@@ -11,7 +11,7 @@
         <form id="page10-form1" class="list">
             <label class="item item-input" id="page-input3">
                 <span class="input-label">Cantidad</span>
-                <input type="number"  autofocus="autofocus" ng-value="producto.cantidad" ng-model="producto.cantidad" min="1" step="1" max="50">
+                <input type="text"  autofocus="autofocus" ng-value="producto.cantidad" ng-model="producto.cantidad" min="1" step="1" max="50">
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label">Comentarios</span>
