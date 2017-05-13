@@ -51,13 +51,14 @@ function ($scope, $http, $window,$cordovaLocalNotification) {
               customProperty: 'custom value'
             }
          }).then(function (result) {
-                          // ...
+            $window.location = "#/tab/page4";
            });          
-            $window.location = "#/page3";      
+          
         }).error(function(error){
             console.error(error);
         });
     };
+    $window.location = "#/tab/page4";
 
 }])
    
@@ -118,13 +119,53 @@ function ($scope, $window, $http) {
     }
 }])
    
-.controller('page6Ctrl', ['$scope','$window', '$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('page6Ctrl', ['$scope','$window', '$http', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $window, $http) {
+function ($scope, $window, $http, $ionicPopup) {
     if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
   }
+///SE PIDE EL NUMERO DE MESA //
+var popupMesa = $ionicPopup.prompt({
+   title: 'Sr. Usuario',
+   template: '¿Ya está ubicado en una mesa de nuestro restaurante?',
+   inputType: 'text',
+   inputPlaceholder: 'Ingrese el numero de su mesa',
+ });
+
+popupMesa.then(function(res) {
+  console.log('Su mesa es: ', res);
+  localStorage.setItem("mesa", res);
+  });
+
+
+/// FIN DE LA PETICION DE LA MESA//
+
+
+////////// INICIA LA PETICIÓN PARA LA IMG DEL RESTAURANTE EN EL HEADER/////
+
+////////// INICIA LA PETICIÓN PARA LA IMG DEL RESTAURANTE EN EL HEADER/////
+
+$http({
+       url:"http://co-workers.com.co/adaris/freeorder/api/img_rest.php",
+       method:"POST",
+       data: {
+           restId: localStorage['restId']
+        },
+       headers: {'Content-type': 'application/x-www-form-urlencoded'}
+   }).then(
+       function(respuesta){          
+        $scope.restaurantes = respuesta.data;    
+       }
+   );
+  
+
+///////// FIN DE LA PETICIÓN PARA LA IMG DEL RESTAURANTE EN EL HEADER//////
+
+///////// FIN DE LA PETICIÓN PARA LA IMG DEL RESTAURANTE EN EL HEADER//////
+
+
  $http({
        url:"http://co-workers.com.co/adaris/freeorder/api/categorias.php",
        method:"POST",
@@ -280,7 +321,8 @@ $http({
        if(res) {
          var data = {
           pedido: JSON.parse(localStorage['pedido']),
-          user_id: parseInt(localStorage['user_id'])
+          user_id: parseInt(localStorage['user_id']),
+          mesa: parseInt(localStorage['mesa'])
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/pedidos.php", data).success(function(){
          $cordovaLocalNotification.schedule({
@@ -327,6 +369,47 @@ $http({
        }
      });
    };
+
+   ////PEDIR LA CUENTA ////////
+    $rootScope.pedirCuenta = function(){
+     var confirmPopup = $ionicPopup.confirm({
+       title: 'Sr. Usuario',
+       template: '¿Cómo desea hacer su pago?',
+        cancelText: 'Tarjeta',
+        cancelType: 'button-positive',
+        okText: 'Efectivo'
+     });
+     confirmPopup.then(function(res) {
+       if(res) {
+            console.log("Ha seleccionado la opción  EFECTIVO");
+            var pago = "Efectivo";
+       }
+       else {
+            console.log("Ha seleccionado la opción  TARJETA");
+            var pago = "Tarjeta de Crédito";
+       }
+       var data = {
+            user_id: parseInt(localStorage['user_id']),
+            rest_id: parseInt(localStorage['restId']),
+            total: $scope.total(),
+            formaPago: pago
+        }
+        $http.post("http://co-workers.com.co/adaris/freeorder/api/pedirCuenta.php", data).success(function(response){ 
+            var alertPopup = $ionicPopup.alert({
+                title: 'Sr. Usuario',
+                template: 'Uno de nuestros meseros le atenderá enseguida con su cuenta'
+            });
+
+            alertPopup.then(function(res) {
+                console.log('Uno de nuestros meseros le atenderá enseguida con su cuenta');
+            });
+                  
+        }).error(function(error){
+           
+        });
+     });       
+    }
+   ////FIN DE PEDIR CUENTA ////
    
 }])
 
@@ -449,5 +532,40 @@ function ($scope, $window, $cordovaBarcodeScanner){
       }
       );
  };
+
+}])
+
+.controller('meseroCtrl', ['$scope', '$window', '$http', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $window, $http, $ionicPopup){
+    if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  }
+     //////////////LLAMAR AL MESERO /////////////////
+
+  $scope.llamarMesero = function(){
+        var data = {
+            user_id: parseInt(localStorage['user_id']),
+            mesa:     parseInt(localStorage['mesa'])
+        }
+        $http.post("http://co-workers.com.co/adaris/freeorder/api/mesero.php", data).success(function(response){
+            console.log(response);  
+            var alertPopup = $ionicPopup.alert({
+                      title: 'Sr. Usuario',
+                      template: 'Uno de nuestros meseros le atenderá en un momento',
+                      cssClass: 'dark',
+                      okType: 'button-positive'
+                    });              
+        }).error(function(error){
+           console.log(error); 
+           var alertPopup = $ionicPopup.alert({
+                      title: 'Sr. Usuario',
+                      template: 'Al parecer hay un problema con la conexión, por favor intenta nuevamente',
+                      cssClass: 'dark',
+                      okType: 'button-positive'
+                    }); 
+        });
+}  //////////FIN DE LLAMAR AL MESERO ////////// 
 
 }])

@@ -11,7 +11,7 @@
         <form id="page10-form1" class="list">
             <label class="item item-input" id="page-input3">
                 <span class="input-label">Cantidad</span>
-                <input type="text"  autofocus="autofocus" ng-value="producto.cantidad" ng-model="producto.cantidad" min="1" step="1" max="50">
+                <input type="text" ng-value="producto.cantidad" ng-model="producto.cantidad" min="1" step="1" max="50">
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label">Comentarios</span>
@@ -30,6 +30,7 @@
             </li>
         </ul>
         <h2>Total:  ${{total()}} </h2>
+        
         <button class="btn btn-danger" ng-click="comprar();">Confirmar pedido</button>
         <button class="btn btn-danger" ng-click="eliminarPedido();">Eliminar Pedido</button>
     </div>

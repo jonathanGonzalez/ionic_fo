@@ -10,13 +10,18 @@ navigation history that also transitions its views in and out.
     <ion-nav-view name="tab-page4"></ion-nav-view>
   </ion-tab>
 
-  <!-- Mi Carrito -->
+  <!-- Scanner de QR's -->
   <ion-tab title="Escanear" icon-off="ion-qr-scanner" icon-on="ion-qr-scanner" ng-click="scanner()" ng-controller="scannerCtrl">
     <ion-nav-view name="tab-page14"></ion-nav-view>
   </ion-tab>
 
+  <!-- Llamar al mesero -->
+  <ion-tab title="Mesero" icon-off="ion-android-hand" icon-on="icon ion-android-hand" ng-click="llamarMesero()" ng-controller="meseroCtrl">
+    <ion-nav-view name="tab-page15"></ion-nav-view>
+  </ion-tab>
+
   <!-- Mi Carrito -->
-  <ion-tab title="Mi Carrito" icon-off="ion-ios-cart-outline" icon-on="ion-ios-cart" href="#/tab/page11">
+  <ion-tab title="Pedidos" icon-off="ion-ios-cart-outline" icon-on="ion-ios-cart" href="#/tab/page11">
     <ion-nav-view name="tab-page11"></ion-nav-view>
   </ion-tab>
 
