@@ -1,7 +1,7 @@
 <?
 $postdata = file_get_contents("php://input");
 	$request = json_decode($postdata);
-	$restId = $request->restId;
+	$userId = $request->userId;
 /// CONECTA A LA BASE DE DATOS
 
 	// Create connection
@@ -21,7 +21,7 @@ $postdata = file_get_contents("php://input");
  	///// invocar datos
 
  	/// invoca los datos de la base de datos
- 	$result = mysqli_query($conexion,"SELECT * FROM categorias_menu WHERE rest_category = $restId AND categorias_menu_cat_id IS NULL ");
+ 	$result = mysqli_query($conexion,"SELECT * FROM pedidos WHERE users_use_id = $userId ORDER BY ped_fecha DESC ");
 
 
 
@@ -35,17 +35,15 @@ $postdata = file_get_contents("php://input");
 
 
       // crea un objeto donde se incluyen los datos del registro
-	   	$categoria = array();
-	   	$categoria["id"]          = $row['cat_id'];
-        $categoria["nombre"]      = $row['rest_nombre'];
-        $categoria["descripcion"] = $row['cat_descripcion'];
-		$categoria["imagen"]      = $row['cat_image'];
-	   	
+	   	$historial = array();
+	   	$historial["id"]          = $row['ped_id'];
+        $historial["fecha"]      = $row['ped_fecha'];
+
        
 	   
 
 	   	/// inserta el objeto con los datos de registro, dentro del arreglo general
-	   	array_push($resultadoOrdenado, $categoria);
+	   	array_push($resultadoOrdenado, $historial);
 
 	}
 

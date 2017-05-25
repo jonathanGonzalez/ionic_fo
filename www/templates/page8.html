@@ -1,29 +1,30 @@
-<ion-view title="Resumen del pedido" id="page8">
+<ion-view title="Producto" id="page8"  class="bar-positive">
   <ion-content padding="true" class="has-header">
-    <ion-list id="resumenDelPedido-list5">
-      <ion-item class="item-icon-left" id="resumenDelPedido-list-item8">
-        <i class="icon ion-close-circled"></i>Dorada a la plancha .....$15.000</ion-item>
-      <label class="item item-input" id="resumenDelPedido-input9">
-        <span class="input-label">Comentario:</span>
-        <input type="text" value="&quot;Quisiera que estuviera bien dorada&quot; Gracias" placeholder=" ">
-      </label>
-      <ion-item class="item-icon-left" id="resumenDelPedido-list-item9">
-        <i class="icon ion-close-circled"></i>Limonada .......................$3.000</ion-item>
-      <ion-item class="item-icon-left" id="resumenDelPedido-list-item10">
-        <i class="icon ion-close-circled"></i>Camarones .....................$8.000</ion-item>
-    </ion-list>
-    <div class="spacer" style="width: 300px; height: 27px;"></div>
-    <div class="item item-body" id="resumenDelPedido-list-item-container6">
-      <h2 id="resumenDelPedido-heading4" style="color:#000000;">Impuesto al consumo (8%)... $2.080</h2>
-      <div id="resumenDelPedido-markdown8" class="show-list-numbers-and-dots">
-        <p style="color:#000000;">
-          <strong>Subtotal:</strong> .........................................$23.920</p>
-      </div>
-      <div id="resumenDelPedido-markdown10" class="show-list-numbers-and-dots">
-        <p style="color:#000000;">
-          <strong>Total:</strong> ..................................................$26.000</p>
-      </div>
+    <div ng-repeat="producto in productos">
+        <h1 id="page6-heading1" style="color:#000000;text-align:center;">{{producto.nombre}}</h1>
+        <div>
+        <img src="{{producto.imagen}}" style="display: block; width: 80%; height: auto; margin-left: auto; margin-right: auto;">
+        </div>
+        <div class="item item-body" id="page6-list-item-container5">
+        <h2 id="page6-heading2" style="color:#000000;text-align:center;">{{producto.descripcion}}</h2>
+        <h2 id="page6-heading3" style="color:#000000;text-align:center;">{{producto.valor | currency}}</h2>
+        <form id="page10-form1" class="list">
+            <label class="item item-input" id="page-input3">
+                <span class="input-label">Cantidad</span>
+                <input type="text" ng-value="producto.cantidad" ng-model="producto.cantidad" min="1" step="1" max="50">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Comentarios</span>
+                <input type="text" ng-model="producto.comentario" ng-value="producto.comentario" placeholder="Comentarios sobre este producto"/>
+            </label>
+         </form>
+        <button id="page6-button6" style="font-weight:500;" class="button button-positive  button-block" ng-click="agregarPedidoId(producto.id, producto.comentario, producto.cantidad);agregarPedidoCompleto(producto); agregarComentario()">Agregar</button>
+        </div>
     </div>
-    <button id="resumenDelPedido-button13" class="button button-positive  button-block">Hacer Pedido</button>
-  </ion-content>
+        <div class="col-sm-3 carrito">
+        <h2>Total:  ${{total()}} </h2>
+    </div>
+        </div>
+    </div>
+</ion-content>
 </ion-view>

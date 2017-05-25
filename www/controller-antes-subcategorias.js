@@ -172,79 +172,20 @@ $http({
        }
    )
 
-  /////////CONSULTAR SI LA CATEGORIA SELECCIONADA TIENE SUBCATEGORIAS ////
-  
- $scope.consul_subcateg = function(_categId){
-  localStorage.setItem("categId", _categId);
-  $http({
-         url:"http://co-workers.com.co/adaris/freeorder/api/consul-subcategorias.php",
-         method:"POST",
-         data: {
-            categId: parseInt(localStorage['categId'])
-          },
-         headers: {'Content-type': 'application/x-www-form-urlencoded'}
-     }).then(
-         function(respuesta){          
-          /*$scope.subcategorias = respuesta.data; ;
-          alert(respuesta.data.length);  */
-          if(respuesta.data.length === 30){
-              localStorage.setItem("categId", _categId);
-              $window.location = "#/tab/page10";
-          }
-          else{
-            $window.location = "#/tab/page7";
-          }
-          //fin del else y del ciclo
-         }
-     )
-   }
-
-
-  /////// FIN DE LA CONSULTA PARA SABER SI EXISTEN SUBCATEGORIAS /////////// 
-
-}])
-
-.controller('page7Ctrl', ['$scope', '$window', '$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $window, $http) {
-    if(localStorage['user_id'] === undefined){
-    $window.location = "#/page1";
-  }
-  ////////// INICIA LA PETICIÓN PARA LA IMG DEL RESTAURANTE EN EL HEADER/////
-
-$http({
-       url:"http://co-workers.com.co/adaris/freeorder/api/img_rest.php",
-       method:"POST",
-       data: {
-           restId: localStorage['restId']
-        },
-       headers: {'Content-type': 'application/x-www-form-urlencoded'}
-   }).then(
-       function(respuesta){          
-        $scope.restaurantes = respuesta.data;    
-       }
-   ); 
-
-///////// FIN DE LA PETICIÓN PARA LA IMG DEL RESTAURANTE EN EL HEADER//////
-  
-   $http({
-       url:"http://co-workers.com.co/adaris/freeorder/api/subcategorias.php",
-       method:"POST",
-       data: {
-           categId: localStorage['categId']
-        },
-       headers: {'Content-type': 'application/x-www-form-urlencoded'}
-   }).then(
-       function(respuesta){          
-        $scope.subcategorias = respuesta.data;    
-       }
-   );
-
-   $scope.consul_Productos = function(_categId){
+    $scope.consul_Productos = function(_categId){
         localStorage.setItem("categId", _categId);
         $window.location = "#/tab/page10";
     }
+}])
+
+.controller('page7Ctrl', ['$scope', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $window) {
+    if(localStorage['user_id'] === undefined){
+    $window.location = "#/page1";
+  }
+  
 
 }])
 
@@ -511,27 +452,6 @@ function ($scope,$window,$cordovaToast, $http, $rootScope) {
   $scope.editPerfil = function(){
     $window.location ="#/tab/page13";
 }
-////////// MI HISTORIAL //////////////
-  $http({
-       url:"http://co-workers.com.co/adaris/freeorder/api/historial.php",
-       method:"POST",
-       data: {
-           userId: parseInt(localStorage['user_id'])
-        },
-       headers: {'Content-type': 'application/x-www-form-urlencoded'}
-   }).then(
-       function(respuesta){          
-        $scope.historiales = respuesta.data;    
-       }
-   )
-
-/////////FIN DE MI HISTORIAL///////////
-
-  $scope.ver_Pedido_Historial = function(_item){
-    localStorage.setItem("ver_Pedido_Historial", _item);  
-    $window.location = "#/tab/page17";
-
-    }
 
 }])
 .controller('page13Ctrl', ['$scope', '$window', '$cordovaToast', '$http', '$ionicPopup', '$ionicHistory', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -650,28 +570,4 @@ function ($scope, $window, $http, $ionicPopup){
         });
 }  //////////FIN DE LLAMAR AL MESERO ////////// 
 
-}])
-
-.controller('page17Ctrl', ['$scope', '$window', '$http', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $window, $http, $ionicPopup){
-    if(localStorage['user_id'] === undefined){
-    $window.location = "#/page1";
-  }
-     //////////////LLAMAR AL MESERO /////////////////
-
-
-         $http({
-       url:"http://co-workers.com.co/adaris/freeorder/api/ver_pedido_historial.php",
-       method:"POST",
-       data: {
-           pedidoId: parseInt(localStorage['ver_Pedido_Historial'])
-        },
-       headers: {'Content-type': 'application/x-www-form-urlencoded'}
-   }).then(
-       function(respuesta){          
-        $scope.pedido = respuesta.data;    
-       }
-   )
 }])

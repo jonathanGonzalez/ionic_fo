@@ -21,18 +21,8 @@
         <button id="page6-button6" style="font-weight:500;" class="button button-positive  button-block" ng-click="agregarPedidoId(producto.id, producto.comentario, producto.cantidad);agregarPedidoCompleto(producto); agregarComentario()">Agregar</button>
         </div>
     </div>
-        <div class="col-sm-3 carrito">        
-      <h4><i class="fa fa-shopping-cart"></i> Carrito de compras</h4>
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="producto in carritoCompleto">
-               {{producto.nombre}}
-                <strong class="pull-right">{{producto.valor}}</strong>
-            </li>
-        </ul>
+        <div class="col-sm-3 carrito">
         <h2>Total:  ${{total()}} </h2>
-        
-        <button class="btn btn-danger" ng-click="comprar();">Confirmar pedido</button>
-        <button class="btn btn-danger" ng-click="eliminarPedido();">Eliminar Pedido</button>
     </div>
         </div>
     </div>

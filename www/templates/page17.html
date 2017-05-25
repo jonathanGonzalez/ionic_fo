@@ -1,0 +1,23 @@
+<ion-view title="Tu Pedido" id="page17">
+  <ion-nav-buttons side="left" class="has-header">
+    <button class="button button-icon icon No Icon"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+    <div class="list card" id="pedido-card22">
+      <ion-item class="item-divider text-center" id="page3-list-item-divider3"> Tu pedido fue:</ion-item>
+      <ion-item class="item-thumbnail-left positive" id="pedido-list-item10" ng-repeat="producto in pedido track by producto.id">
+        <img src="{{producto.imagen}}">
+        <h2positive>{{producto.nombre}}
+          <p style="white-space:normal;">{{producto.valor | currency}}</p>
+        </h2positive>        
+         <label class="item item-input item-floating-label" id="page10-input1">
+        <input type="text" ng-value="producto.cantidad" placeholder="Cantidad" ng-model="producto.cantidad" min="1" step="1" max="50">
+      </label>
+       <label class="item item-input item-floating-label" id="page10-input2">
+        <input type="text" ng-model="producto.comentario" placeholder="Comentario:" ng-value="producto.comentario"/>
+      </label>
+      </ion-item>
+    </div>
+    <!--<button id="page6-button6" style="font-weight:500;" class="button button-positive  button-block" ng-click="comprar();">Realizar Pedido</button>-->
+  </ion-content>
+</ion-view>

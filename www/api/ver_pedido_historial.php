@@ -1,7 +1,7 @@
 <?
 $postdata = file_get_contents("php://input");
 	$request = json_decode($postdata);
-	$restId = $request->restId;
+	$pedidoId = $request->pedidoId;
 /// CONECTA A LA BASE DE DATOS
 
 	// Create connection
@@ -21,9 +21,7 @@ $postdata = file_get_contents("php://input");
  	///// invocar datos
 
  	/// invoca los datos de la base de datos
- 	$result = mysqli_query($conexion,"SELECT * FROM categorias_menu WHERE rest_category = $restId AND categorias_menu_cat_id IS NULL ");
-
-
+ 	$result = mysqli_query($conexion,"SELECT * FROM pedidos_has_productos WHERE pedidos_ped_id = $pedidoId ");
 
  	/// crea un arreglo general vacio
  	$resultadoOrdenado = array();
@@ -32,26 +30,28 @@ $postdata = file_get_contents("php://input");
 
     // el arreglo se popula en este bucle
 	while($row = mysqli_fetch_array($result)){
+		// crea un objeto donde se incluyen los datos del registro
+	   	$productos = array();
+	   	$pro_id = $row['productos_pro_id'];
+	   	$productos["id"]          = $row['productos_pro_id'];
+	   	$productos["comentario"]  = $row['coment_prod_ped'];
+	   	$productos["cantidad"]    = $row['cant_prod_ped'];
+	   	$query = mysqli_query($conexion,"SELECT * FROM productos WHERE pro_id = '$pro_id'");
+	   	$fila = mysqli_fetch_assoc($query);
+	   	$productos['nombre'] = $fila['pro_nombre'];
+	   	$productos['valor']  = $fila['pro_valor'];
+	   	$productos['imagen'] = $fila['pro_image'];
 
 
-      // crea un objeto donde se incluyen los datos del registro
-	   	$categoria = array();
-	   	$categoria["id"]          = $row['cat_id'];
-        $categoria["nombre"]      = $row['rest_nombre'];
-        $categoria["descripcion"] = $row['cat_descripcion'];
-		$categoria["imagen"]      = $row['cat_image'];
-	   	
-       
-	   
+	
 
 	   	/// inserta el objeto con los datos de registro, dentro del arreglo general
-	   	array_push($resultadoOrdenado, $categoria);
+	   	array_push($resultadoOrdenado, $productos);
 
 	}
 
 
     /// una vez populado el arreglo general con datos, se convierte a Json
 		echo json_encode($resultadoOrdenado, JSON_UNESCAPED_UNICODE );
-
 
 ?>

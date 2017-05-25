@@ -66,7 +66,7 @@ angular.module('app.routes', [])
   .state('tab.page7', {
     url: '/page7',   
     views: {
-      'tab-page7': {
+      'tab-page4': {
          templateUrl: 'templates/page7.html',  
         controller: 'page7Ctrl'
       }
@@ -128,6 +128,26 @@ angular.module('app.routes', [])
       }
      }
   })
+
+     .state('tab.page16', {
+    url: '/page16',    
+    views: {
+      'tab-page11': {  
+        templateUrl: 'templates/page16.html',
+        controller: 'page10Ctrl'
+      }
+     }
+  })
+      .state('tab.page17', {
+    url: '/page17',    
+    views: {
+      'tab-page12': {  
+        templateUrl: 'templates/page17.html',
+        controller: 'page17Ctrl'
+      }
+     }
+  })
+
 $urlRouterProvider.otherwise('/tab/page4')
 
 });

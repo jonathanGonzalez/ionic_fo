@@ -36,5 +36,11 @@
  <a id="page12-button6" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" ng-click="logout();">Cerrar Sesion</a>
 </div>
 </div>
+<ion-item class="item-divider text-center" id="page3-list-item-divider3"> Mi Historial</ion-item>
+<ion-item class="item-thumbnail-left positive" id="pedido-list-item10" ng-repeat="historial in historiales">
+  <img src="{{historial.imagen}}">
+  <h2positive>{{historial.fecha}}
+ <a id="page12-button5" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" ng-click="ver_Pedido_Historial(historial.id);">Ver</a>
+  </h2positive> 
 </ion-content>
 </ion-view>
