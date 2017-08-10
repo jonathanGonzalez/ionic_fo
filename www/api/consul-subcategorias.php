@@ -6,7 +6,7 @@ $postdata = file_get_contents("php://input");
 	/// CONECTA A LA BASE DE DATOS
 	// Create connection
 	// reemplazar con ("localhost", USUARIO, PASSWORD, NOMBRE_DE_BASE_DE_DATOS)
-	$conexion=mysqli_connect("localhost","coworker_free","freeorder2017","coworker_freeorder");
+	$conexion=mysqli_connect("localhost","coworker_free","freeorder2017","coworker_freeorder_final");
 
 	// revisa si la conexion es correcta
 	if (mysqli_connect_errno($conexion)) {

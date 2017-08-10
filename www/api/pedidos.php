@@ -1,33 +1,18 @@
 <?
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-header('Access-Control-Allow-Methods: GET, POST, PUT');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 require('conexion.php');
-$data = json_decode(file_get_contents("php://input"));
+$data 	 = json_decode(file_get_contents("php://input"));
 $pedidos = $data->pedido;
+$adicionales = $data->adicionales;
 $userId  = $data->user_id;
-$mesa = $data->mesa;
-echo "///// Echo  del id del usuario<br/>";
-echo "$userId <br/>";
-echo "///// fin del echo del id del usuario<br/>";
-echo "///// var dump del id del usuario<br/>";
-var_dump($userId);
-echo "///// <br/><br/>";
-echo "///// var dump de pedidos<br/>";
-var_dump($pedidos);
-echo "///// <br/>";
-echo "///// imprimir un pedido<br/>";
-print_r( $pedidos[0]);
-echo "///// fin de imprimir un pedido<br/>";
-echo "///// ID PEDIDO imprimir el id de un pedido<br/>";
-print_r( $pedidos[0][id]);
-echo "///// fin de imprimir el id de un pedido<br/>";
-$sql = $db->query("INSERT INTO pedidos (users_use_id, ped_mesa) VALUES ('$userId','$mesa')");
+$mesa 	 = $data->mesa;
+
+
+$sql	= $db->query("INSERT INTO pedidos (users_use_id, mesas_mes_pk_id) VALUES ('$userId','$mesa')");
 $lastId = $db->lastInsertId();
 echo $lastId;
-//$datospedido = json_decode($pedidos, true);
-echo "<br/> contador del arreglo<br/>";
-echo count($pedidos);
-echo "<br/> fin del contador del arreglo<br/>";
 
 for($i = 0; $i <= count($pedidos); ++$i) {
     $id_producto= $pedidos[$i];
@@ -35,6 +20,17 @@ for($i = 0; $i <= count($pedidos); ++$i) {
     $coment_producto= $pedidos[$i];
     ++$i;
     $cant_producto= $pedidos[$i];
-    $query = $db->query("INSERT INTO pedidos_has_productos (pedidos_ped_id, productos_pro_id, coment_prod_ped, cant_prod_ped)  VALUES ('".$lastId."','".$id_producto."','".$coment_producto."','".$cant_producto."')");
+    ++$i;
+    $tamano_prod = $pedidos[$i];
+    echo "///// Echo  del tamaño seleccionado<br/>";
+    echo $tamano_prod;
+    $sql = $db->query("INSERT INTO pedidos_has_productos (pedidos_ped_id, productos_pro_id, ped_comentario, tamanos_tam_pk_id) VALUES ('$lastId','$id_producto','$coment_producto','$tamano_prod')");
+    $lastInsert = $db->lastInsertId();
+
+for($a = 0; $a <= count($adicionales); ++$a){
+    $adicionales_adi_pk_id = $adicionales[$a];
+    $sql = $db->query("INSERT INTO pedidos_has_productos_has_adicionales (pedidos_has_productos_ped_pk_id, adicionales_adi_pk_id) VALUES ('$lastInsert','$adicionales_adi_pk_id')");
 }
+}
+
 ?>

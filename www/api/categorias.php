@@ -1,4 +1,8 @@
 <?
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+
 $postdata = file_get_contents("php://input");
 	$request = json_decode($postdata);
 	$restId = $request->restId;
@@ -6,7 +10,7 @@ $postdata = file_get_contents("php://input");
 
 	// Create connection
 	// reemplazar con ("localhost", USUARIO, PASSWORD, NOMBRE_DE_BASE_DE_DATOS)
-	$conexion=mysqli_connect("localhost","coworker_free","freeorder2017","coworker_freeorder");
+	$conexion=mysqli_connect("localhost","coworker_free","freeorder2017","coworker_freeorder_final");
 
 	// revisa si la conexion es correcta
 	if (mysqli_connect_errno($conexion)) {
@@ -21,7 +25,7 @@ $postdata = file_get_contents("php://input");
  	///// invocar datos
 
  	/// invoca los datos de la base de datos
- 	$result = mysqli_query($conexion,"SELECT * FROM categorias_menu WHERE rest_category = $restId AND categorias_menu_cat_id IS NULL ");
+ 	$result = mysqli_query($conexion,"SELECT * FROM categorias_menu WHERE rest_category = $restId AND categorias_menu_cat_id IS NOT NULL ");
 
 
 
@@ -37,7 +41,7 @@ $postdata = file_get_contents("php://input");
       // crea un objeto donde se incluyen los datos del registro
 	   	$categoria = array();
 	   	$categoria["id"]          = $row['cat_id'];
-        $categoria["nombre"]      = $row['rest_nombre'];
+        $categoria["nombre"]      = $row['cat_nombre'];
         $categoria["descripcion"] = $row['cat_descripcion'];
 		$categoria["imagen"]      = $row['cat_image'];
 	   	

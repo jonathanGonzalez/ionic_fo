@@ -1,6 +1,6 @@
 <ion-view title="Productos" id="page10"  class="bar-positive">
   <ion-content padding="true" class="has-header">
-    <div ng-repeat="producto in productos">
+    <div ng-repeat="producto in detallesProducto">
         <h1 id="page6-heading1" style="color:#000000;text-align:center;">{{producto.nombre}}</h1>
         <div>
         <img src="{{producto.imagen}}" style="display: block; width: 80%; height: auto; margin-left: auto; margin-right: auto;">
@@ -18,13 +18,29 @@
                 <input type="text" ng-model="producto.comentario" ng-value="producto.comentario" placeholder="Comentarios sobre este producto"/>
             </label>
          </form>
-        <button id="page6-button6" style="font-weight:500;" class="button button-positive  button-block" ng-click="agregarPedidoId(producto.id, producto.comentario, producto.cantidad);agregarPedidoCompleto(producto); agregarComentario()">Agregar</button>
         </div>
+               <div class="list">
+                  <label class="item item-input item-select">
+                    <div class="input-label">
+                      Tamaño
+                    </div>
+                    <select ng-model="tamanoSelected" ng-options="tamano as tamano.nombre for tamano in tamanoProducto track by tamano.id" >
+                      <option value="">--Elige opcion--</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="item item-divider"> Seleccione los adicionales (Opcional)
+                </div>
+                  <ion-list ng-repeat="adicional in adicionales" >
+                    <ion-checkbox ng-model="adicionalesSelected" ng-change="adicionalSelected(adicional.id)">{{adicional.nombre}}</ion-checkbox> 
+                    
+                  </ion-list>
+                
+                <button id="page6-button6" style="font-weight:500;" class="button button-positive  button-block" ng-click="agregarPedidoId(producto.id, producto.comentario, producto.cantidad, tamanoSelected.id);agregarPedidoCompleto(producto); agregarComentario();cantidadProductosPedidos(producto.cantidad);">Agregar
+                </button>
+                    
+                
     </div>
-        <div class="col-sm-3 carrito">
-        <h2>Total:  ${{total()}} </h2>
-    </div>
-        </div>
-    </div>
+
 </ion-content>
 </ion-view>

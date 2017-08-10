@@ -5,7 +5,7 @@
   <ion-content padding="true" class="has-header">
     <div class="list card" id="pedido-card22">
       <ion-item class="item-divider text-center" id="page3-list-item-divider3"> Tu pedido fue:</ion-item>
-      <ion-item class="item-thumbnail-left positive" id="pedido-list-item10" ng-repeat="producto in pedido track by producto.id">
+      <ion-item class="item-thumbnail-left positive" id="pedido-list-item10" ng-repeat="producto in pedido">
         <img src="{{producto.imagen}}">
         <h2positive>{{producto.nombre}}
           <p style="white-space:normal;">{{producto.valor | currency}}</p>

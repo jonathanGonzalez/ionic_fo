@@ -1,4 +1,8 @@
 <?
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+
 $postdata = file_get_contents("php://input");
 	$request = json_decode($postdata);
 	$userId = $request->userId;
@@ -6,7 +10,7 @@ $postdata = file_get_contents("php://input");
 
 	// Create connection
 	// reemplazar con ("localhost", USUARIO, PASSWORD, NOMBRE_DE_BASE_DE_DATOS)
-	$conexion=mysqli_connect("localhost","coworker_free","freeorder2017","coworker_freeorder");
+	$conexion=mysqli_connect("localhost","coworker_free","freeorder2017","coworker_freeorder_final");
 
 	// revisa si la conexion es correcta
 	if (mysqli_connect_errno($conexion)) {

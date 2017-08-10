@@ -105,8 +105,7 @@ function ($scope, $window, $http) {
        method:"POST",
        data: {
            sectId: localStorage['sectId']
-        },
-       headers: {'Content-type': 'application/x-www-form-urlencoded'}
+        }
    }).then(
        function(respuesta){
         $scope.restaurantes = respuesta.data;    
@@ -158,23 +157,44 @@ $http({
    ); 
 
 ///////// FIN DE LA PETICIÓN PARA LA IMG DEL RESTAURANTE EN EL HEADER//////
-
+////////CONSULTAR LAS CATEGORIAS DEPENDIENDO DEL RESTAURANTE ///////////
  $http({
        url:"http://co-workers.com.co/adaris/freeorder/api/categorias.php",
        method:"POST",
        data: {
            restId: localStorage['restId']
-        },
-       headers: {'Content-type': 'application/x-www-form-urlencoded'}
+        }
    }).then(
        function(respuesta){          
-        $scope.categorias = respuesta.data;    
-       }
+        $scope.categorias = respuesta.data;
+      }
    )
-
-  /////////CONSULTAR SI LA CATEGORIA SELECCIONADA TIENE SUBCATEGORIAS ////
+    $scope.toggleGroup = function(categoria, categId) {
+      localStorage.setItem("categId", categId);
+       $http({
+       url:"http://co-workers.com.co/adaris/freeorder/api/productos.php",
+       method:"POST",
+       data: {
+           categId: localStorage['categId']
+        }
+   }).then(
+       function(respuesta){          
+        $scope.productos = respuesta.data;
+     }
+   );
+    categoria.show = !categoria.show;
+  };
+  $scope.isGroupShown = function(categoria) {
+    return categoria.show;
+  };
+  $scope.ver_Producto = function (producto_id){
+        localStorage.setItem("detalles_Producto", producto_id);
+        $window.location = "#/tab/page10";
+    };
+/////////////////////////FIN DE LAS CATEGORIAS ////////////////////////
+ /////////CONSULTAR SI LA CATEGORIA SELECCIONADA TIENE SUBCATEGORIAS ////
   
- $scope.consul_subcateg = function(_categId){
+ /* $scope.consul_subcateg = function(_categId){
   localStorage.setItem("categId", _categId);
   $http({
          url:"http://co-workers.com.co/adaris/freeorder/api/consul-subcategorias.php",
@@ -185,11 +205,11 @@ $http({
          headers: {'Content-type': 'application/x-www-form-urlencoded'}
      }).then(
          function(respuesta){          
-          /*$scope.subcategorias = respuesta.data; ;
-          alert(respuesta.data.length);  */
+          //$scope.subcategorias = respuesta.data; ;
+         // alert(respuesta.data.length);  
           if(respuesta.data.length === 30){
               localStorage.setItem("categId", _categId);
-              $window.location = "#/tab/page10";
+              $window.location = "#/tab/page8";
           }
           else{
             $window.location = "#/tab/page7";
@@ -197,10 +217,12 @@ $http({
           //fin del else y del ciclo
          }
      )
-   }
-
-
+   }*/
   /////// FIN DE LA CONSULTA PARA SABER SI EXISTEN SUBCATEGORIAS /////////// 
+
+  //////NUEVA VISTA DE LAS CATEGORIAS//////
+ 
+  /////FIN DE LA NUEVA VISTA DE LAS CATEGORIAS /////
 
 }])
 
@@ -218,8 +240,7 @@ $http({
        method:"POST",
        data: {
            restId: localStorage['restId']
-        },
-       headers: {'Content-type': 'application/x-www-form-urlencoded'}
+        }
    }).then(
        function(respuesta){          
         $scope.restaurantes = respuesta.data;    
@@ -243,19 +264,36 @@ $http({
 
    $scope.consul_Productos = function(_categId){
         localStorage.setItem("categId", _categId);
-        $window.location = "#/tab/page10";
+        $window.location = "#/tab/page8";
     }
 
 }])
 
-.controller('page8Ctrl', ['$scope', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('page8Ctrl', ['$scope', '$window', '$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $window) {
+function ($scope, $window, $http) {
     if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
   }
 
+  $http({
+       url:"http://co-workers.com.co/adaris/freeorder/api/productos.php",
+       method:"POST",
+       data: {
+           categId: localStorage['categId']
+        },
+       headers: {'Content-type': 'application/x-www-form-urlencoded'}
+   }).then(
+       function(respuesta){          
+        $scope.productos = respuesta.data;
+     }
+   );
+
+    $scope.ver_Producto = function (producto_id){
+        localStorage.setItem("detalles_Producto", producto_id);
+        $window.location = "#/tab/page10";
+    }
 }])
 
 .controller('page9Ctrl', ['$scope', '$http', '$window', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -315,25 +353,80 @@ function ($scope, $window, $http, $rootScope,$cordovaLocalNotification,$ionicPop
     $window.location = "#/page1";
   }
   var pedidoRealizado =  false;
-$http({
-       url:"http://co-workers.com.co/adaris/freeorder/api/productos.php",
+  
+   /////VER TODO EL PRODUCTO (UNO SOLO)//////
+
+        $http({
+       url:"http://co-workers.com.co/adaris/freeorder/api/ver_producto.php",
        method:"POST",
        data: {
-           categId: localStorage['categId']
-        },
-       headers: {'Content-type': 'application/x-www-form-urlencoded'}
+           detalles_Producto: parseInt(localStorage['detalles_Producto'])
+        }
    }).then(
-       function(respuesta){          
-        $scope.productos = respuesta.data;
-     }
-   );  
-  
+       function(respuesta){
+        $scope.detallesProducto = respuesta.data;    
+       }
+   );
+
+   /////VER LOS TAMAÑOS DE UN PRODUCTO)//////
+        $http({
+       url:"http://co-workers.com.co/adaris/freeorder/api/tamaños_producto.php",
+       method:"POST",
+       data: {
+           tamaños_Producto: parseInt(localStorage['detalles_Producto'])
+        }
+   }).then(
+       function(respuesta){
+        $scope.tamanoProducto = respuesta.data;    
+       }
+   ); 
+
+   ////FIN DE LA VISTA DE LOS TAMAÑOS DE UN PRODUCTO///
+
+ 
+   /////VER LOS ADICIONALES DE UN PRODUCTO)//////
+        $http({
+       url:"http://co-workers.com.co/adaris/freeorder/api/adicionales.php",
+       method:"POST",
+       data: {
+           idProducto: parseInt(localStorage['detalles_Producto'])
+        }
+   }).then(
+       function(respuesta){
+        $scope.adicionales = respuesta.data;    
+       }
+   ); 
+
+    $scope.adicionalesSelect = [];
+    $scope.adicionalSelected = function(adicional){    
+    $scope.adicionalesSelect.push(adicional);
+    alert($scope.adicionalesSelect);
+    localStorage.setItem('adicionales',JSON.stringify($scope.adicionalesSelect));
+   // console.log($scope.adicionalesSelect);
+   };
+
+
+
+   ////FIN DE LA VISTA DE LOS ADICIONALES DE UN PRODUCTO///
+ 
+
+   ////FIN DE LA VISTA DE UN SOLO PRODUCTO///
+        $scope.cantidadProductosPedidos = function(cantidad){
+         localStorage.setItem("cantidadProductosPedidos", cantidad);
+        }
     //agregar productos al carrito de compras
-        $scope.carritoId = [];    
-        $scope.agregarPedidoId = function(_item, _comentario, _cantidad){               
-        $scope.carritoId.push(_item, _comentario, _cantidad);
+        $scope.carritoId = [];   
+        $scope.agregarPedidoId = function(_item, _comentario, _cantidad, _tamano){               
+        $scope.carritoId.push(_item, _comentario, _cantidad, _tamano);
         localStorage.setItem('pedido',JSON.stringify($scope.carritoId));
-}   
+}
+
+ /*   //agregar adicionales al carrito de compras
+        $scope.adicionalesId = [];   
+        $scope.agregarAdicionalesId = function(_item){               
+        $scope.adicionalesId.push(_item);
+        localStorage.setItem('adicionales',JSON.stringify($scope.adicionalesId));
+}   */
         $rootScope.carritoCompleto = [];
         $scope.agregarPedidoCompleto = function(_productoCompleto){
         $scope.carritoCompleto.push(_productoCompleto);
@@ -374,8 +467,10 @@ $http({
        if(res) {
          var data = {
           pedido: JSON.parse(localStorage['pedido']),
+          adicionales: JSON.parse(localStorage['adicionales']),
           user_id: parseInt(localStorage['user_id']),
           mesa: parseInt(localStorage['mesa'])
+
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/pedidos.php", data).success(function(){
                   //Alert bonito para Dar aviso de que si se hizo el pedido                  
@@ -517,8 +612,7 @@ function ($scope,$window,$cordovaToast, $http, $rootScope) {
        method:"POST",
        data: {
            userId: parseInt(localStorage['user_id'])
-        },
-       headers: {'Content-type': 'application/x-www-form-urlencoded'}
+        }
    }).then(
        function(respuesta){          
         $scope.historiales = respuesta.data;    
@@ -627,6 +721,12 @@ function ($scope, $window, $http, $ionicPopup){
      //////////////LLAMAR AL MESERO /////////////////
 
   $scope.llamarMesero = function(){
+   var confirmPopup = $ionicPopup.confirm({
+       title: 'Sr. Usuario',
+       template: '¿Está seguro que quiere hacer este pedido?'
+     });
+   
+
         var data = {
             user_id: parseInt(localStorage['user_id']),
             mesa:     parseInt(localStorage['mesa'])
@@ -674,4 +774,45 @@ function ($scope, $window, $http, $ionicPopup){
         $scope.pedido = respuesta.data;    
        }
    )
+}])
+
+
+  
+.controller('page18Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams) {
+
+ $scope.groups = [];
+  for (var i=0; i<=10; i++) {
+    $scope.groups[i] = {
+      name: i,
+      items: [],
+      show: false
+    };
+    for (var j=0; j<3; j++) {
+      $scope.groups[i].items.push(i + '-' + j);
+    }
+  }
+  
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
+  $scope.toggleGroup = function(group) {
+    group.show = !group.show;
+  };
+  $scope.isGroupShown = function(group) {
+    return group.show;
+  };
+
+}])
+
+.controller('promocionesCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams) {
+
+ 
+
 }])

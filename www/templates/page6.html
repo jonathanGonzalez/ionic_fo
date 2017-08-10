@@ -1,11 +1,35 @@
 
 <ion-view title="Categorias"  id="page6">
-  <ion-content padding="true" class="manual-ios-statusbar-padding has-header">
- <div  ng-repeat="restaurante in restaurantes">
-      <img src="{{restaurante.imagen}}" style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto;">
+  <ion-content class="has-header">
+  <label class="item item-input margin-search"> 
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" placeholder="Buscar categoria" ng-model="buscar">
+  </label>
+ <div  ng-repeat="restaurante in restaurantes" >
+      <img src="{{restaurante.imagen}}" class="margin-image-rest">
     </div>
-    <div ng-repeat="categoria in categorias" style="width: 30%; height: auto; float: left">
-      <img src="{{categoria.imagen}}" ng-click="consul_subcateg(categoria.id);" style="width:100%;height:auto;">
-    </div>
+      <ion-list>
+        <div ng-repeat="categoria in categorias  | filter:buscar">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(categoria, categoria.id)"
+                    ng-class="{active: isGroupShown(categoria)}">
+              <i class="icon" ng-class="isGroupShown(categoria) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            {{categoria.nombre}}
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="producto in productos track by producto.id"
+                    ng-show="isGroupShown(categoria)">
+                    <ion-item class="item-thumbnail-left positive" id="pedido-list-item10">
+			        <img src="{{producto.imagen}}">
+			        <h2positive>{{producto.nombre}}
+			          <p style="white-space:normal;">{{producto.valor | currency}}</p>
+			        </h2positive>
+			      <a id="page12-button5" style="border-radius:7px 7px 7px 7px;" class="button button-positive  button-block" ng-click="ver_Producto(producto.id);">Ver</a>
+            <a id="page12-button5" style="border-radius:7px 7px 7px 7px;" class="button button-energized  button-block" >Pedir ya</a>
+			      </ion-item>
+          </ion-item>
+        </div>
+      </ion-list>
   </ion-content>
 </ion-view>

@@ -1,12 +1,12 @@
 <?
-header('Access-Control-Allow-Methods: GET, POST');
-header("Access-Control-Allow-Headers: X-Requested-With");
-header('Content-Type: text/html; charset=utf-8');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
 /// CONECTA A LA BASE DE DATOS
 	// Create connection
 	// reemplazar con ("localhost", USUARIO, PASSWORD, NOMBRE_DE_BASE_DE_DATOS)
-	$conexion=mysqli_connect("localhost","coworker_free","freeorder2017","coworker_freeorder");
+	$conexion=mysqli_connect("localhost","coworker_free","freeorder2017","coworker_freeorder_final");
 	// revisa si la conexion es correcta
 	if (mysqli_connect_errno($conexion)) {
 		echo "error en la conexion a base de datos: " . mysqli_connect_error();}
