@@ -129,7 +129,7 @@ function ($scope, $window, $http, $ionicPopup) {
 var popupMesa = $ionicPopup.prompt({
    title: 'Sr. Usuario',
    template: '¿Ya está ubicado en una mesa de nuestro restaurante?',
-   inputType: 'text',
+   inputType: 'select',
    inputPlaceholder: 'Ingrese el numero de su mesa',
  });
 
@@ -718,18 +718,21 @@ function ($scope, $window, $http, $ionicPopup){
     if(localStorage['user_id'] === undefined){
     $window.location = "#/page1";
   }
-     //////////////LLAMAR AL MESERO /////////////////
 
-  $scope.llamarMesero = function(){
+
+//////////////LLAMAR AL MESERO /////////////////
+ $scope.llamarMesero = function() {
    var confirmPopup = $ionicPopup.confirm({
-       title: 'Sr. Usuario',
-       template: '¿Está seguro que quiere hacer este pedido?'
-     });
-   
+     title: 'Sr. Usuario',
+     template: '¿Está seguro que necesita uno de nuestros meseros?'
+   });
 
+   confirmPopup.then(function(res) {
+     if(res) {
+       console.log('El usuario si está seguro de necesitar un mesero');
         var data = {
             user_id: parseInt(localStorage['user_id']),
-            mesa:     parseInt(localStorage['mesa'])
+            mesa:    parseInt(localStorage['mesa'])
         }
         $http.post("http://co-workers.com.co/adaris/freeorder/api/mesero.php", data).success(function(response){
             console.log(response);  
@@ -748,7 +751,25 @@ function ($scope, $window, $http, $ionicPopup){
                       okType: 'button-positive'
                     }); 
         });
-}  //////////FIN DE LLAMAR AL MESERO ////////// 
+     } else {
+       console.log('El usuario no está seguro de necesitar un mesero');
+                // An alert dialog
+         $scope.showAlert = function() {
+           var alertPopup = $ionicPopup.alert({
+             title: 'Sr. Usuario',
+             template: 'Recuerde que en cualquier momento podrá solicitar la atención de uno de nuestros usuarios'
+           });
+
+           alertPopup.then(function(res) {
+             console.log('El usuario entiende que puede solicitar la atención de un mesero en cualquier momento');
+           });
+         };
+     };
+   });
+ };
+
+
+  //////////FIN DE LLAMAR AL MESERO ////////// 
 
 }])
 
@@ -813,6 +834,7 @@ function ($scope, $stateParams) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
 
- 
+
 
 }])
+
